@@ -1,0 +1,9 @@
+-var sideMenuList = [{ key:"about",title: "关于我们"},{key:"brand",title: "品牌介绍"},{key: "contact",title: "联系我们"},{key: "address",title:"门店地址"},{key: "join",title: "招贤纳士"},{key: "collaboration",title: "合作洽谈"},{key: "privacy",title: "隐私声明"}];
+
+.menu
+    h2
+        span 关于我们
+    dl
+        each item in keys
+            dd
+                a(href="/about/#{item.key}", title="#{item.title}") #{item.title}

@@ -1,0 +1,11 @@
+extends ../shard/layout
+block content
+	.container
+	if error && typeof(error) !== 'undefined'
+		.alert.alert-error #{error}
+	if success && typeof(success) !== 'undefined'
+		.alert.alert-success #{success}
+
+	- var url = typeof(referer) !== 'undefined' ? referer : '/'
+	a(href={referer: url})
+		span.span-common 返回

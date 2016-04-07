@@ -1,0 +1,92 @@
+extends ../shard/layout
+block content
+    .user
+        .container
+            .row
+                .col-sm-3
+                    include ../includes/ucSideMenu
+                .col-sm-9
+                    h3.inset-title
+                        strong
+                            | !{subTitle}
+                    .inset-content
+                        input#cartListLen(type='hidden',value='#{cartList.length}')
+                        if !cartList || cartList.length > 0
+                            table.table.table-order
+                                colgroup
+                                    col.col-checkbox
+                                    col.col-detail
+                                    col.col-price
+                                    col.col-state
+                                    col.col-opera
+                                thead
+                                    tr
+                                        th.th-checkbox
+                                            label
+                                                input(type="checkbox").input-checkbox#selectall
+                                                | 全选
+                                        th 产品详情
+                                        th 订单总金额
+                                        th 操作
+                                each cart,key in cartList
+                                    tbody.order-state-progress#cart_id(data-cartid='#{cart._id}' data-price='#{cart.items.product.refPrice}')
+                                        tr.sep-row
+                                            td(colspan="3")
+                                        tr.tr-hd
+                                            td(colspan="5").tl
+                                                input(type="checkbox").input-checkbox.single
+                                                span.date #{timeArr[key]}
+                                        tr.tr-bd
+                                            td.tl(colspan="2")
+                                                div.goods-item
+                                                    a(href="javascript:;", target="_blank", title="#{cart.items.product.name}").pic
+                                                        img(src="../../images/meldor/online/product-s-1.jpg", alt="")
+                                                    span.goods-cat 西装
+                                                    a(href="/product/#{cart.items.product._id}", target="_blank", title="#{cart.items.product.name}").goods-msg #{cart.items.product.name}
+                                            td
+                                                del.price
+                                                    | 原价
+                                                    em &yen;
+                                                    | #{cart.items.product.originPrice}
+                                                span.price
+                                                    | 价格
+                                                    em &yen
+                                                    | #{cart.items.product.refPrice}
+                                            td
+                                                a.btn.btn-link(href="javascript:delCartInfo(['#{cart._id}'])") 删除
+                            .toolbar-box
+                                .select-all
+                                    a(href="javascript:;")#clearselected 移除选中商品
+                                .toolbar-box-right
+                                    .btn-area
+                                        a.btn.btn-red(href="#")#createorder 生成订单
+                                    .price-count
+                                        | 总价
+                                        span.price#totalPrice
+                                            em &yen;
+                                            | 0
+                                    .select-count
+                                        | 选中
+                                        span #{cartList.length}
+                                        | 件商品
+                        else
+                            .empty-box
+                                .empty-con
+                                    h5 您的试衣间还没有衣服哦~
+                                    .empty-btn
+                                        a.btn.btn-primary(href="javascript:;") 返回首页
+    #myModal.modal.fade(tabindex='-1',role='dialog',aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+            .modal-content
+                .modal-header
+                    button.close(type='button',data-dismiss='modal',aria-label='关闭')
+                        span(aria-hidden='true') &times;
+                    h4.modal-title 提示
+                .modal-body
+                .modal-footer
+                    button.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button',data-dismiss='modal') 确定
+block script
+    script(src='/js/view/menu.js')
+    script(src='/js/view/change_room.js')
+

@@ -1,0 +1,21 @@
+doctype html
+html(lang="zh-CN")
+    head
+        title= title
+        meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width,initial-scale=1,user-scalable=no,maximum-scale=1.0,minimal-ui')
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/css/main.css')
+        block style
+    body
+
+        include ../includes/top.jade
+
+        block content
+
+        include ../includes/foot.jade
+
+        script(src='/js/lib/jquery.min.js')
+        script(src='/js/lib/bootstrap.min.js',charset="UTF-8")
+        script(src = '/js/view/base.js')
+        block script

@@ -1,0 +1,28 @@
+extends ../shard/layout-lands
+
+block content
+    .container
+        h1
+          span.pull-left 预约列表
+          a.btn.btn-success.pull-right(href='/lands/down10001',style={display:block}) 导出
+          .clearfix
+        table.table.table-hover
+            thead
+                tr.alert-warning
+                    th 姓名
+                    th 婚期
+                    th 手机
+                    th 渠道
+                    th 意向预约时间
+                    th 提交时间
+                    th 备注
+            tbody
+              each val,index in data
+                tr
+                  td #{val.userName}
+                  td #{val.wedDate}
+                  td #{val.phoneNumber}
+                  td #{val.channel}
+                  td #{val.appTime}
+                  td #{val.create}
+                  td #{val.remark}

@@ -1,0 +1,69 @@
+extends shard/layout
+block content
+
+    .flexslider
+        ul.slides
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-1.jpg", alt="")
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-2.jpg", alt="")
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-3.jpg", alt="")
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-4.jpg", alt="")
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-5.jpg", alt="")
+            li
+                a(href="javascript:;")
+                    img(src="images/meldor/online/banner-b-6.jpg", alt="")
+    //-.slider#slider
+        ul.slider-main
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-1.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-1.jpg")
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-2.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-2.jpg")
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-3.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-3.jpg")
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-4.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-4.jpg")
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-5.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-5.jpg")
+            li
+                a(href="javascript:;", style=" background:url(images/meldor/online/banner-b-6.jpg) center top no-repeat;")
+                    //- img(src="images/meldor/online/banner-b-6.jpg")
+        .slider-extra
+            .slider-nav
+                ul
+                    li.current
+                        img(src="images/meldor/online/banner-s-1.jpg")
+                    li
+                        img(src="images/meldor/online/banner-s-2.jpg")
+                    li
+                        img(src="images/meldor/online/banner-s-3.jpg")
+                    li
+                        img(src="images/meldor/online/banner-s-4.jpg")
+                    li
+                        img(src="images/meldor/online/banner-s-5.jpg")
+                    li
+                        img(src="images/meldor/online/banner-s-6.jpg")
+            a.slider-prev(href="javascript:;")
+                i.ico-main.i-main-prev
+            a.slider-next(href="javascript:;")
+                i.ico-main.i-main-next
+
+block style
+    link(rel='stylesheet', href='/css/flexslider.css')
+
+block script
+    script(src='/js/view/plugin/jquery.flexslider-min.js')
+    script(src='/js/view/index.js')

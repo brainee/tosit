@@ -1,0 +1,1549 @@
+doctype html
+html(lang='en')
+  head
+    // start: Meta
+    meta(charset='utf-8')
+    | &#x9;
+    title Bootstrap Metro Dashboard by Dennis Ji for ARM demo
+    | &#x9;
+    meta(name='description', content='Bootstrap Metro Dashboard')
+    | &#x9;
+    meta(name='author', content='Dennis Ji')
+    | &#x9;
+    meta(name='keyword', content='Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+    // end: Meta
+    // start: Mobile Specific
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // end: Mobile Specific
+    // start: CSS
+    link#bootstrap-style(href='../css/bootstrap.min.css', rel='stylesheet')
+    | &#x9;
+    link(href='../css/bootstrap-responsive.min.css', rel='stylesheet')
+    | &#x9;
+    link#base-style(href='../css/style.css', rel='stylesheet')
+    | &#x9;
+    link#base-style-responsive(href='../css/style-responsive.css', rel='stylesheet')
+    | &#x9;
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext', rel='stylesheet', type='text/css')
+    // end: CSS
+    // The HTML5 shim, for IE6-8 support of HTML5 elements
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      |     
+      link#ie-style(href='../css/ie.css', rel='stylesheet')
+    //if IE 9
+      link#ie9style(href='../css/ie9.css', rel='stylesheet')
+    // start: Favicon
+    link(rel='shortcut icon', href='img/favicon.ico')
+    // end: Favicon
+  body
+    // start: Header
+    .navbar
+      .navbar-inner
+        .container-fluid
+          a.btn.btn-navbar(data-toggle='collapse', data-target='.top-nav.nav-collapse,.sidebar-nav.nav-collapse')
+            span.icon-bar
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            span.icon-bar
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            span.icon-bar
+          | &#x9;&#x9;&#x9;&#x9;
+          a.brand(href='index.html')
+            span Metro
+          // start: Header Menu
+          .nav-no-collapse.header-nav
+            ul.nav.pull-right
+              li.dropdown.hidden-phone
+                a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+                  i.halflings-icon.white.warning-sign
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                ul.dropdown-menu.notifications
+                  li.dropdown-menu-title
+                    span You have 11 notifications
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    a(href='#refresh')
+                      i.icon-repeat
+                  | &#x9;
+                  |                             &#x9;
+                  li
+                    a(href='#')
+                      span.icon.blue
+                        i.icon-user
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New user registration
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 1 min
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.green
+                        i.icon-comment-alt
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New comment
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 7 min
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.green
+                        i.icon-comment-alt
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New comment
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 8 min
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.green
+                        i.icon-comment-alt
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New comment
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 16 min
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.blue
+                        i.icon-user
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New user registration
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 36 min
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.yellow
+                        i.icon-shopping-cart
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message 2 items sold
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 1 hour
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.warning
+                    a(href='#')
+                      span.icon.red
+                        i.icon-user
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message User deleted account
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 2 hour
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.warning
+                    a(href='#')
+                      span.icon.red
+                        i.icon-shopping-cart
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New comment
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time 6 hour
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.green
+                        i.icon-comment-alt
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New comment
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time yesterday
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.icon.blue
+                        i.icon-user
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.message New user registration
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time yesterday
+                  |                                 
+                  li.dropdown-menu-sub-footer
+                    a View all notifications
+              // start: Notifications Dropdown
+              li.dropdown.hidden-phone
+                a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+                  i.halflings-icon.white.tasks
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                ul.dropdown-menu.tasks
+                  li.dropdown-menu-title
+                    span You have 17 tasks in progress
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    a(href='#refresh')
+                      i.icon-repeat
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.header
+                        span.title iOS Development
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.percent
+                      |                                         
+                      .taskProgress.progressSlim.red 80
+                  |                                 
+                  li
+                    a(href='#')
+                      span.header
+                        span.title Android Development
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.percent
+                      |                                         
+                      .taskProgress.progressSlim.green 47
+                  |                                 
+                  li
+                    a(href='#')
+                      span.header
+                        span.title ARM Development
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.percent
+                      |                                         
+                      .taskProgress.progressSlim.yellow 32
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.header
+                        span.title ARM Development
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.percent
+                      |                                         
+                      .taskProgress.progressSlim.greenLight 63
+                  |                                 
+                  li
+                    a(href='#')
+                      span.header
+                        span.title ARM Development
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.percent
+                      |                                         
+                      .taskProgress.progressSlim.orange 80
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a.dropdown-menu-sub-footer View all tasks
+              // end: Notifications Dropdown
+              // start: Message Dropdown
+              li.dropdown.hidden-phone
+                a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+                  i.halflings-icon.white.envelope
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                ul.dropdown-menu.messages
+                  li.dropdown-menu-title
+                    span You have 9 messages
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    a(href='#refresh')
+                      i.icon-repeat
+                  | &#x9;
+                  |                             &#x9;
+                  li
+                    a(href='#')
+                      span.avatar
+                        img(src='../img/avatar.jpg', alt='Avatar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.header
+                        span.from
+                          | Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.time
+                          | 6 min
+                      |                                         
+                      span.message
+                        | Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                  |                                 
+                  li
+                    a(href='#')
+                      span.avatar
+                        img(src='../img/avatar.jpg', alt='Avatar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.header
+                        span.from
+                          | Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.time
+                          | 56 min
+                      |                                         
+                      span.message
+                        | Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                  |                                 
+                  li
+                    a(href='#')
+                      span.avatar
+                        img(src='../img/avatar.jpg', alt='Avatar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.header
+                        span.from
+                          | Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.time
+                          | 3 hours
+                      |                                         
+                      span.message
+                        | Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      span.avatar
+                        img(src='../img/avatar.jpg', alt='Avatar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.header
+                        span.from
+                          | Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.time
+                          | yesterday
+                      |                                         
+                      span.message
+                        | Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                  |                                 
+                  li
+                    a(href='#')
+                      span.avatar
+                        img(src='../img/avatar.jpg', alt='Avatar')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.header
+                        span.from
+                          | Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.time
+                          | Jul 25, 2012
+                      |                                         
+                      span.message
+                        | Lorem ipsum dolor sit amet consectetur adipiscing elit, et al commore
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a.dropdown-menu-sub-footer View all messages
+              // end: Message Dropdown
+              li
+                a.btn(href='#')
+                  i.halflings-icon.white.wrench
+              // start: User Dropdown
+              li.dropdown
+                a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+                  i.halflings-icon.white.user
+                  |  Dennis Ji
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  span.caret
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                ul.dropdown-menu
+                  li.dropdown-menu-title
+                    span Account Settings
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      i.halflings-icon.user
+                      |  Profile
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='login.html')
+                      i.halflings-icon.off
+                      |  Logout
+              // end: User Dropdown
+          // end: Header Menu
+    // start: Header
+    .container-fluid-full
+      .row-fluid
+        // start: Main Menu
+        #sidebar-left.span2
+          .nav-collapse.sidebar-nav
+            ul.nav.nav-tabs.nav-stacked.main-menu
+              li
+                a(href='index.html')
+                  i.icon-bar-chart
+                  span.hidden-tablet  Dashboard
+              | &#x9;
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='messages.html')
+                  i.icon-envelope
+                  span.hidden-tablet  Messages
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='tasks.html')
+                  i.icon-tasks
+                  span.hidden-tablet  Tasks
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='ui.html')
+                  i.icon-eye-open
+                  span.hidden-tablet  UI Features
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='widgets.html')
+                  i.icon-dashboard
+                  span.hidden-tablet  Widgets
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a.dropmenu(href='#')
+                  i.icon-folder-close-alt
+                  span.hidden-tablet  Dropdown
+                  span.label.label-important  3 
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                ul
+                  li
+                    a.submenu(href='submenu.html')
+                      i.icon-file-alt
+                      span.hidden-tablet  Sub Menu 1
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a.submenu(href='submenu2.html')
+                      i.icon-file-alt
+                      span.hidden-tablet  Sub Menu 2
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a.submenu(href='submenu3.html')
+                      i.icon-file-alt
+                      span.hidden-tablet  Sub Menu 3
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='form.html')
+                  i.icon-edit
+                  span.hidden-tablet  Forms
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='chart.html')
+                  i.icon-list-alt
+                  span.hidden-tablet  Charts
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='typography.html')
+                  i.icon-font
+                  span.hidden-tablet  Typography
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='gallery.html')
+                  i.icon-picture
+                  span.hidden-tablet  Gallery
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='table.html')
+                  i.icon-align-justify
+                  span.hidden-tablet  Tables
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='calendar.html')
+                  i.icon-calendar
+                  span.hidden-tablet  Calendar
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='file-manager.html')
+                  i.icon-folder-open
+                  span.hidden-tablet  File Manager
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='icon.html')
+                  i.icon-star
+                  span.hidden-tablet  Icons
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              li
+                a(href='login.html')
+                  i.icon-lock
+                  span.hidden-tablet  Login Page
+        // end: Main Menu
+        noscript
+          .alert.alert-block.span10
+            h4.alert-heading Warning!
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            p
+              | You need to have 
+              a(href='http://en.wikipedia.org/wiki/JavaScript', target='_blank') JavaScript
+              |  enabled to use this site.
+        // start: Content
+        #content.span10
+          ul.breadcrumb
+            li
+              i.icon-home
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              a(href='index.html') Home
+              |  
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              i.icon-angle-right
+            | &#x9;&#x9;&#x9;&#x9;
+            li
+              a(href='#') Widgets
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          .row-fluid
+            .box.black.span4(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.white.list
+                  span.break
+                  | Weekly Stat Metro Style
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.white.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.white.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.dashboard-list.metro
+                  li
+                    a(href='#')
+                      i.icon-arrow-up.green
+                      |                                
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong 92
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;New Comments
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-down.red
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 15
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Registrations
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-minus.blue
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 36
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Articles
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-comment.yellow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 45
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  User reviews
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-up.green
+                      |                                
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 112
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Comments
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-down.red
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 31
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Registrations
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-minus.blue
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 93
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Articles
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-comment.yellow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      strong 256
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  User reviews
+            // /span
+            .box.black.span4(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.white.user
+                  span.break
+                  | Last Users Metro Style
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.white.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.white.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.dashboard-list.metro
+                  li.green
+                    a(href='#')
+                      img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  Approved
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.yellow
+                    a(href='#')
+                      img.avatar(alt='Bill', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  Pending
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.red
+                    a(href='#')
+                      img.avatar(alt='Jane', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  Banned
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.blue
+                    a(href='#')
+                      img.avatar(alt='Kate', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  Updated
+            // /span
+            .box.black.span4.noMargin(ontablet='span12', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.white.check
+                  span.break
+                  | To Do List Metro Style
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-setting(href='#')
+                    i.halflings-icon.white.wrench
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.white.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.white.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                .todo.metro
+                  ul.todo-list
+                    li.red
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Windows Phone 8 App 
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong today
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.red
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;New frontend layout
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong today
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.yellow
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Hire developers
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong tommorow
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.yellow
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Windows Phone 8 App
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong tommorow
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.green
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;New frontend layout
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong this week
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.green
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Hire developers
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong this week
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.blue
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;New frontend layout
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong this month
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li.blue
+                      a.action.icon-check-empty(href='#')
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;Hire developers
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      strong this month
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          .row-fluid
+            .box.span4(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.list
+                  span.break
+                  | Weekly Stat Alt.
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.dashboard-list
+                  li
+                    a(href='#')
+                      i.icon-arrow-up.green
+                      |                                
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.green 92
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;New Comments
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-down.red
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.red 15
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Registrations
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-minus.blue
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.blue 36
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Articles
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-comment.yellow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.yellow 45
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  User reviews
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-up.green
+                      |                                
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.green 112
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Comments
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-arrow-down.red
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.red 31
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Registrations
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-minus.blue
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.blue 93
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  New Articles
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                  li
+                    a(href='#')
+                      i.icon-comment.yellow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  
+                      span.yellow 254
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  User reviews
+            // /span
+            .box.span4(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.user
+                  span.break
+                  | Last Users Alt.
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.dashboard-list
+                  li
+                    a(href='#')
+                      img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  
+                    a(href='#') Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  
+                    span.label.label-success Approved
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      img.avatar(alt='', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  
+                    a(href='#') Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  
+                    span.label.label-warning Pending
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      img.avatar(alt='', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  
+                    a(href='#') Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  
+                    span.label.label-important Banned
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li
+                    a(href='#')
+                      img.avatar(alt='', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Name:
+                    |  
+                    a(href='#') Dennis Ji
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Since:
+                    |  Jul 25, 2012 11:09
+                    br
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    strong Status:
+                    |  
+                    span.label.label-info Updates
+            // /span
+            .box.span4.noMargin(ontablet='span12', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.check
+                  span.break
+                  | To Do List Alt.
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-setting(href='#')
+                    i.halflings-icon.wrench
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                .todo
+                  ul.todo-list
+                    li
+                      | Windows Phone 8 App 
+                      span.label.label-important today
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | New frontend layout 
+                      span.label.label-important today
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | Hire developers 
+                      span.label.label-warning tommorow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | Windows Phone 8 App 
+                      span.label.label-warning tommorow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | New frontend layout 
+                      span.label.label-success this week
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | Hire developers 
+                      span.label.label-success this week
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | New frontend layout 
+                      span.label.label-info this month
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    li
+                      | Hire developers 
+                      span.label.label-info this month
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.todo-actions
+                        a(href='#')
+                          i.halflings-icon.ok
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        a.todo-remove(href='#')
+                          i.halflings-icon.remove
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          hr
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          .row-fluid
+            .box.black.span6.noMargin(ontablet='span6', ondesktop='span6')
+              .box-header
+                h2
+                  i.halflings-icon.white.list
+                  span.break
+                  | Support tickets Metro
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.white.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.white.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.tickets.metro
+                  li.ticket.blue
+                    a(href='#')
+                      span.header
+                        span.title Server unavaible
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199278 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ Complete ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#x9;
+                  li.ticket.yellow
+                    a(href='#')
+                      span.header
+                        span.title Mobile App Problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199277 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ Normal priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ Pending ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket.red
+                    a(href='#')
+                      span.header
+                        span.title ARM issue
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199276 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ High priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ In progress ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket.blue
+                    a(href='#')
+                      span.header
+                        span.title IE7 problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199275 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ Rejected ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket.blue
+                    a(href='#')
+                      span.header
+                        span.title Server unavaible
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199274 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ Complete ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#x9;
+                  li.ticket.yellow
+                    a(href='#')
+                      span.header
+                        span.title Mobile App Problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199273 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ Normal priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ Pending ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket.red
+                    a(href='#')
+                      span.header
+                        span.title ARM issue
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199272 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority [ High priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status Status: [ In progress ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+            // /span
+            .box.black.span6(ontablet='span6', ondesktop='span6')
+              .box-header
+                h2
+                  i.halflings-icon.white.comment
+                  span.break
+                  | Chat Metro
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.white.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.white.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.chat.metro.yellow
+                  li.left
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:09
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.right
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:08
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.left
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:07
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.right
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:06
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .chat-form.black
+                  textarea
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  button.btn.btn-warning Send message
+            // /span
+          | &#x9;&#x9;&#x9;
+          | &#x9;&#x9;&#x9;
+          .row-fluid
+            .box.span4(ontablet='span12', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.calendar
+                  span.break
+                  | Calendar
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                #main_calendar_phone
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .clearfix
+            // /span
+            .box.span4.noMargin(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.list
+                  span.break
+                  | Support tickets
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.tickets
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title Server unavaible
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199278 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.blue [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.green [ Complete ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title Mobile App Problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199277 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.yellow [ Normal priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.yellow [ Pending ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title PayPal issue
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199276 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.red [ High priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.blue [ In progress ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title IE7 problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199275 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.blue [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.red [ Rejected ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title Server unavaible
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199274 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.blue [ Low priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.green [ Complete ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;  &#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title Mobile App Problem
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199273 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.yellow [ Normal priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.yellow [ Pending ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.ticket
+                    a(href='#')
+                      span.header
+                        span.title PayPal issue
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.number [ #199272 ]
+                      | &#x9;
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.content
+                        span.avatar
+                          img(src='../img/avatar.jpg', alt='Avatar')
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.name Dennis Ji
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.priority.red [ High priority ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.status
+                          | Status: 
+                          span.blue [ In progress ]
+                        | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                        span.date Jul 25, 2012 11:09
+            // /span
+            .box.span4(ontablet='span6', ondesktop='span4')
+              .box-header
+                h2
+                  i.halflings-icon.comment
+                  span.break
+                  | Chats
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .box-icon
+                  a.btn-minimize(href='#')
+                    i.halflings-icon.chevron-up
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  a.btn-close(href='#')
+                    i.halflings-icon.remove
+              | &#x9;&#x9;&#x9;&#x9;&#x9;
+              .box-content
+                ul.chat
+                  li.left
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:09
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.right
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:08
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.left
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:07
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  li.right
+                    img.avatar(alt='Dennis Ji', src='../img/avatar.jpg')
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    span.message
+                      span.arrow
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.from Dennis Ji
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.time Jul 25, 2012 11:06
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      span.text
+                        | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .chat-form
+                  textarea
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  button.btn.btn-info Send message
+            // /span
+        // /.fluid-container
+        // end: Content
+      // /#content.span10
+    // /fluid-row
+    #myModal.modal.hide.fade
+      .modal-header
+        button.close(type='button', data-dismiss='modal') &times;
+        | &#x9;&#x9;&#x9;
+        h3 Settings
+      | &#x9;&#x9;
+      .modal-body
+        p Here settings can be configured...
+      | &#x9;&#x9;
+      .modal-footer
+        a.btn(href='#', data-dismiss='modal') Close
+        | &#x9;&#x9;&#x9;
+        a.btn.btn-primary(href='#') Save changes
+    | &#x9;
+    | &#x9;
+    .clearfix
+    | &#x9;
+    | &#x9;
+    footer
+      p
+        span(style='text-align:left;float:left')
+          | &copy; 2013 
+          a(href='http://jiji262.github.io/Bootstrap_Metro_Dashboard/', alt='Bootstrap_Metro_Dashboard') Bootstrap Metro Dashboard
+    // start: JavaScript
+    script(src='../js/jquery-1.9.1.min.js')
+    | &#x9;
+    script(src='../js/jquery-migrate-1.0.0.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery-ui-1.10.0.custom.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.ui.touch-punch.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/modernizr.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/bootstrap.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.cookie.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/fullcalendar.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.dataTables.min.js')
+    | &#x9;&#x9;
+    script(src='../js/excanvas.js')
+    | &#x9;
+    script(src='../js/jquery.flot.js')
+    | &#x9;
+    script(src='../js/jquery.flot.pie.js')
+    | &#x9;
+    script(src='../js/jquery.flot.stack.js')
+    | &#x9;
+    script(src='../js/jquery.flot.resize.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.chosen.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.uniform.min.js')
+    | &#x9;&#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.cleditor.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.noty.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.elfinder.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.raty.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.iphone.toggle.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.uploadify-3.1.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.gritter.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.imagesloaded.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.masonry.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.knob.modified.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.sparkline.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/counter.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/retina.js')
+    | &#x9;&#x9;
+    script(src='../js/custom.js')
+    // end: JavaScript

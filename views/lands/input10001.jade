@@ -1,0 +1,123 @@
+extends ../shard/layout-lands
+block style
+    link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
+block content
+    .container
+        form#personalForm.form-horizontal(method="post")
+            input#channel(name="channel",type="hidden",value="#{channel}")
+            input#type(name="type",type="hidden",value="activity")
+            h4.bg-info(style="padding:15px;margin:10px 0 20px") 测量者基本信息
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='userName') 姓名
+                .col-lg-10
+                    input#userName.form-control(name='userName',type='text',placeholder='姓名')
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='weddingDate') 婚期
+                .col-lg-10
+                    .input-group.date.form_date(data-date='',data-date-format="yyyy-mm-dd",
+                    data-link-field="weddingDate")
+                        input#marryDate.form-control(type='text',placeholder='婚期',readonly=true)
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-calendar
+                        input#weddingDate(name='weddingDate',type='hidden')
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='birthday') 生日
+                .col-lg-10
+                    .input-group.date.form_date(data-date='',data-date-format="yyyy-mm-dd",
+                    data-link-field="birthday")
+                        input#birth.form-control(type='text',placeholder='生日',readonly=true)
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-calendar
+                        input#birthday(name='birthday',type='hidden')
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='height') 身高
+                .col-lg-10
+                    .input-group
+                        input#height.form-control(name='height',type='text',placeholder='身高',
+                        aria-describedby='height-addon')
+                        span#height-addon.input-group-addon cm
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='weight') 体重
+                .col-lg-10
+                    .input-group
+                        input#weight.form-control(name='weight',type='text',placeholder='体重',
+                        aria-describedby='weight-addon')
+                        span#weight-addon.input-group-addon kg
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='weight') 所在地区
+                .col-lg-10
+                    select#area.form-control(name='area')
+                        option 所在地区
+                        option 黄浦区
+                        option 徐汇区
+                        option 长宁区
+                        option 静安区
+                        option 闸北区
+                        option 虹口区
+                        option 杨浦区
+                        option 宝山区
+                        option 闵行区
+                        option 嘉定区
+                        option 浦东新区
+                        option 青浦区
+                        option 松江区
+                        option 金山区
+                        option 奉贤区
+                        option 普陀区
+                        option 崇明县
+            h4.bg-info(style="padding:15px;margin:10px 0 20px") 联系方式
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='phoneNumber') 手机号
+                .col-lg-10
+                    .input-group
+                        input#phoneNumber.form-control(name='phoneNumber',type='text',placeholder='手机号')
+                        span.input-group-btn
+                            button#sendVCode.btn.btn-info(type='button') 发送验证码
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='vCode') 验证码
+                .col-lg-10
+                    input#vCode.form-control(name='vCode',type='text',placeholder='验证码')
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='appointmentTime') 意向预约时间
+                .col-lg-10
+                    .input-group.date.form_datetime(data-date='',data-date-format="yyyy-mm-dd hh:ii",
+                    data-link-field="appointmentTime")
+                        input#bookDate.form-control(type='datetime',placeholder='意向预约时间',readonly=true)
+                        span.input-group-addon
+                            i.glyphicon.glyphicon-th
+                        input#appointmentTime(name='appointmentTime',type='hidden')
+            .form-group
+                label.visible-lg.col-sm-2.control-label(for='remark') 备注
+                .col-lg-10
+                    textarea#remark.form-control(name='remark',rows='4',placeholder='备注')
+
+            .from-group
+                .col-lg-10.text-center
+                    button#btnSubmit.btn.btn-primary(type='button') 提交
+                    b &nbsp;
+                    button.btn.btn-default.col-sm-offset-1(type='reset') 重填
+            p &nbsp;
+                br
+
+
+    //button.btn.btn-success(type='button',data-toggle='modal',data-target='.msuccess') 测试成功
+    #myModal.modal.fade(tabindex='-1',role='dialog',aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+            .modal-content
+                .modal-header
+                    button.close(type='button',data-dismiss='modal',aria-label='关闭')
+                        span(aria-hidden='true') &times;
+                    h4.modal-title 提示
+                .modal-body
+                    //.alert.alert-success(role='alert')
+                    //p.text-success 提交成功，稍后会有工作人员联系您！
+                .modal-footer
+                    button.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button',data-dismiss='modal') 确定
+
+    //.alert.alert-warning.hide(role='alert')
+    //.alert.alert-danger.hide(role='alert')
+block script
+    script(src='/js/lib/bootstrap-datetimepicker.min.js',charset="UTF-8")
+    //script(src='/js/jquery-checkform.js',charset="UTF-8")
+    script(src='/js/view/lands/10001.js',charset="UTF-8")

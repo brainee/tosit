@@ -1,0 +1,74 @@
+extends ../shard/layout
+block content
+    .user
+        .container
+            .row
+                .col-sm-3
+                    include ../includes/ucSideMenu
+                .col-sm-9
+                    h3.inset-title
+                        strong
+                            | !{subTitle}
+                    .inset-content
+                        if(!data || data.length == 0)
+                            .empty-box
+                                .empty-con
+                                    h5 您还没有订单哦~
+                                    .empty-btn
+                                        a.btn.btn-primary(href="javascript:;") 返回首页
+                        else
+                            table.table.table-order
+                                colgroup
+                                    col.col-checkbox
+                                    col.col-detail
+                                    col.col-price
+                                    col.col-state
+                                    col.col-opera
+                                thead
+                                    tr
+                                        th 下单时间
+                                        th 订单详情
+                                        th 订单总金额
+                                        th 订单状态
+                                        th 操作
+                                each order,key in data
+                                    tbody.order-state-progress
+                                        tr.sep-row
+                                            td(colspan="5")
+                                        tr.tr-hd
+                                            td(colspan="5").tl
+                                                span.date #{orderInfo[order._id].time}
+                                                span.number 订单号：#{order.orderId}
+                                        each cart,key in order.cart
+                                            tr.tr-bd
+                                                td.tl(colspan="2")
+                                                    div.goods-item
+                                                        a(href="/product/#{cart.items.product._id}", target="_blank", title="#{cart.items.product.name}").pic
+                                                            img(src="../../images/meldor/online/product-s-1.jpg", alt="")
+                                                        span.goods-cat #{cart.items.product.subTitle}
+                                                        a(href="/product/#{cart.items.product._id}", target="_blank", title="#{cart.items.product.name}").goods-msg #{cart.items.product.name}
+                                                if(key < 1)
+                                                    td(rowspan="#{order.cart.length}")
+                                                        span.price
+                                                            | 价格
+                                                            em &yen
+                                                            | #{orderInfo[order._id].price}
+                                                    td(rowspan="#{order.cart.length}")
+                                                        span.state #{order.state}
+                                                    td(rowspan="#{order.cart.length}")
+                                                        a.btn.btn-primary(href="/user/orders_check/#{order._id}") 去付款
+                                                        a.btn.btn-link.deleteorder(href="javascript:;" data-orderid="#{order._id}") 删除
+            #myModal.modal.fade(tabindex='-1',role='dialog',aria-labelledby="mySmallModalLabel")
+                .modal-dialog.modal-sm
+                    .modal-content
+                        .modal-header
+                            button.close(type='button',data-dismiss='modal',aria-label='关闭')
+                                span(aria-hidden='true') &times;
+                            h4.modal-title 提示
+                        .modal-body
+                        .modal-footer
+                            button.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                            button.btn.btn-primary(type='button',data-dismiss='modal') 确定
+block script
+    script(src='/js/view/menu.js')
+    script(src='/js/view/order.js')

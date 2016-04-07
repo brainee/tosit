@@ -1,0 +1,112 @@
+//Created by lmmeng on 2015-10-26.
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+            i.icon-angle-right
+        li
+            a(href='/offline/category') 产品类别管理
+            i.icon-angle-right
+        li
+            a(href='/offline/material/#{key}') [#{key}] - 产品物料列表
+            i.icon-angle-right
+        li
+            a(href='#') [#{data.label}] - 产品物料子项
+
+    include ../../includes/pop
+    - var mtt = data.type == '图片'
+    .row-fluid.sortable
+        .box.span6
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品物料列表 （物料类型：#{data.type}）
+            .box-content
+                if !(data && data.items && data.items.length > 0)
+                    .alert.alert-info 暂无数据
+                else
+                    table.table.table-bordered.table-striped
+                        tr
+                            th 物料名称
+                            th 物料图标
+                            th 操作
+                        each obj,index in data.items
+                            tr(data-id=obj._id,data-index=index)
+                                td=obj.name
+                                td
+                                    if mtt
+                                        img(src=obj.icon,alt=obj.name,style='width:50px')
+                                    else
+                                        span 无
+                                td.center
+                                    a.btn.btn-mini.btn-danger.del(data-id=obj._id,data-index=index)
+                                        i.halflings-icon.white.trash
+        .box.span6
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品物料
+                .box-icon
+                    a#btnNew(href='#')
+                        i.halflings-icon.plus
+            .box-content
+                form.form-horizontal(enctype='multipart/form-data',method='post')
+                    fieldset
+                        .row-fluid.sortable
+                            .control-group
+                                label.control-label(for='name') 物料名称
+                                .controls
+                                    input#index(type='hidden',name='index', value='-1')
+                                    input#name.input-medium(type='text', name='name')
+                            .control-group
+                                label.control-label(for='icon') 物料图片
+                                .controls
+                                    input#icon.input-medium(type='file', name='icon')
+                        .form-actions
+                            button#save.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button#reset.btn(type='reset') 取消重填
+block script
+    script.
+        $(function () {
+            var btnSave = $('#save'), btnReset = $('#reset');
+            var postType;
+            $('tr').on("click", function (e) {
+                var me = $(this), item = me.find('td');
+                $('#index').val(me.data('index'));
+                $('#name').val(item[0].innerText);
+                postType = "edit";
+            });
+            btnSave.on('click', function () {
+                $('form').submit();
+            });
+            $("#btnNew").on('click', function () {
+                $('#index').val(-1);
+                $('#name').val('');
+                postType = "add";
+            });
+
+            $(".del").on("click", function () {
+                var itemid = $(this).data('id'),
+                        index = $(this).data('index');
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该物料？', null, function () {
+                        $.post("/offline/material/#{key}/items/del/#{data._id}", {
+                            itemid: itemid,
+                            index: index
+                        }, function (res) {
+                            showMessage(res && res.status == 'ok', null, null, function () {
+                                location.reload();
+                            });
+                        });
+                    });
+                }
+            });
+        });

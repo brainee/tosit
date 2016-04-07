@@ -1,0 +1,20 @@
+//
+   Created by koyoshiro on 15/10/2.
+extends shard/layout
+block content
+    .login
+        .container(style=" max-width:768px;")
+            .row
+                .col-sm-12
+            form.form-horizontal
+                .form-group
+                    label.col-sm-2.control-label 手机号
+                    .col-sm-5
+                        input.form-control#txtMobile(type="number",placeholder="手机号",name="tel")
+
+                .form-group.form-group-action
+                    .col-sm-5.col-sm-offset-2
+                        button.btn.btn-primary#btnFind 找回密码
+    block script
+        script(src='/js/view/find.js')
+

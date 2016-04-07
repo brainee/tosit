@@ -1,0 +1,9 @@
+node_modules
+.idea
+_psd
+.psd
+.DS_Store
+*.html
+!public
+!demo
+

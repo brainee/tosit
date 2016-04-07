@@ -1,0 +1,39 @@
+#myModal.modal.hide.fade
+    .modal-header
+        button.close(type='button', data-dismiss='modal') &times;
+        h3#modal-title 标题
+    .modal-body
+        p#modal-body 内容
+
+    .modal-footer
+        a#modal-close.btn(href='#', data-dismiss='modal') 关闭
+        a#modal-save.btn.btn-primary(href='#') 保存
+
+#message.alert.hidden
+    button.close(type='button', data-dismiss='alert') &times;
+    strong 操作进行异常！
+
+block script
+    script.
+        function showModal(title, body, saveCallback, closeCallback) {
+            $('#modal-title').html(title);
+            $('#modal-body').html(body);
+            if (closeCallback) $('#modal-close').on('click', closeCallback);
+            $('#modal-save').on('click', function () {
+                if (saveCallback) saveCallback.apply(null, arguments);
+                $('#modal-close').click();
+            });
+            $('#myModal').modal('show');
+        }
+        function showMessage(stat, succMsg, failMsg, successCallback, failCallback) {
+            var message = $('#message'), msgText = message.find('strong');
+            if (stat) {
+                message.addClass('alert-success').removeClass('hidden');
+                msgText.text(succMsg ? succMsg : '成功操作了一条数据！');
+                if(successCallback) successCallback();
+            } else {
+                message.addClass('alert-error').removeClass('hidden');
+                msgText.text(failMsg ? failMsg : '数据操作失败，请重新尝试！');
+                if(failCallback) failCallback();
+            }
+        }

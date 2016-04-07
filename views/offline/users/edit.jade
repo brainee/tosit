@@ -1,0 +1,118 @@
+//
+   Created by alex on 15/9/15.
+
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/users') 注册会员列表
+            i.icon-angle-right
+        li
+            a(href='#') 会员编辑
+
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                    i.halflings-icon.edit
+                    span.break
+                    | 会员编辑
+            .box-content
+                .alert.alert-error#errorInfo(style=" margin:10px; display:none")
+                    button.close(type='button', data-dismiss='alert') &times;
+                    strong 保存错误!
+                    |  请正确输入表单信息。
+                form.form-horizontal(method='post')
+                    fieldset
+                        .control-group
+                            label.control-label(for='loginName') 用户名
+                            .controls
+                                input#loginName.input-xxlarge(type='text', name='loginname', value=data.loginname)
+                        .control-group
+                            label.control-label(for='phone') 手机号
+                            .controls
+                                input#phone.input-xxlarge(type='text', name='phone', value=data.phone)
+                        .control-group
+                            label.control-label(for='nickName') 昵称
+                            .controls
+                                input#nickName.input-xxlarge(type='text', name='nickname', value=data.nickname)
+                        .control-group
+                            label.control-label(for='email') 邮箱
+                            .controls
+                                input#email.input-xxlarge(type='text', name='email', value=data.email)
+                        .control-group
+                            label.control-label 管理员权限
+                            .controls
+                                label.checkbox.inline
+                                    input#is_admin(type='checkbox',name='is_admin' checked=data.is_admin)
+                                    |  管理员
+                        .control-group
+                            label.control-label 账号状态
+                            .controls
+                                label.checkbox.inline
+                                    input#active(type='checkbox', name='active', checked=data.active)
+                                    |  启用
+                        //.control-group
+                        //    label.control-label(for='location') 密码重置
+                        //    .controls
+                        //        input#resetPwd.btn.btn-info(type='button',value='密码重置')
+                        .control-group
+                            label.control-label(for='location') 所在地区
+                            .controls
+                                input#location.input-xxlarge(type='text', name='location', value='#{data.location ? data.location : ""}')
+                        .control-group
+                            label.control-label(for='weibo') 微博账号
+                            .controls
+                                input#weibo.input-xxlarge(type='text', name='weibo', value='#{data.weibo ? data.weibo : ""}')
+                        .control-group
+                            label.control-label(for='weixin') 微信账号
+                            .controls
+                                input#weixin.input-xxlarge(type='text', name='weixin', value='#{data.weixin ? data.weixin : ""}')
+                        .control-group
+                            label.control-label(for='qq') QQ账号
+                            .controls
+                                input#qq.input-xxlarge(type='text', name='qq', value='#{data.qq ? data.qq : ""}')
+                        .control-group
+                            label.control-label 注册时间
+                            .controls
+                                label.help-block=data.create ? data.create : ""
+                        .control-group
+                            label.control-label 最后修改时间
+                            .controls
+                                label.help-block=data.update ? data.update : ""
+
+                        .form-actions
+                            button.btn.btn-primary#btnSave(type='button',value='#{data._id}') 保存
+                            | &nbsp;
+                            button.btn#btnReset(type='button') 取消重填
+block script
+    script(type="text/javascript").
+        $(function () {
+            var form = $('form');
+            $("#btnSave").on("click", function () {
+                $("#errorInfo").hide();
+
+                var data = form.serialize();
+                console.log(data);
+                $.post("/offline/users/edit/" + this.value, data, function (res) {
+                    if (res == "ok") {
+                        location.href = "/offline/users";
+                    }else
+                    {
+                        $("#errorInfo").show();
+                    }
+                });
+            });
+
+            $("#btnReset").on("click", function () {
+                $("#errorInfo").hide();
+                $("#loginName").val("");
+                $("#nickName").val("");
+                $("#phone").val("");
+                $("#email").val("");
+            });
+        });

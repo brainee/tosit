@@ -1,0 +1,138 @@
+//Created by alex on 15/9/4.
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+            i.icon-angle-right
+        li
+            a(href='#') 产品类别管理
+    include ../../includes/pop
+    .row-fluid.sortable
+        .box.span6
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品类别列表
+            .box-content
+                if !(data && data.length > 0)
+                    .alert.alert-info 暂无数据
+                else
+                    table.table.table-bordered.table-striped
+                        tr
+                            th 标志位
+                            th 分类名称
+                            th 更新时间
+                            th 操作
+                        each obj in data
+                            tr(data-id="#{obj._id}")
+                                td.key #{obj.key}
+                                td.name #{obj.name}
+                                td= obj.update
+                                td.center
+                                    a.btn.btn-mini.btn-danger.delCategory(data-id='#{obj._id}',alt='删除')
+                                        i.halflings-icon.white.trash
+                                    | &nbsp;
+                                    a.btn.btn-mini.btn-success(href='/offline/material/#{obj.key}',alt='物料')
+                                        i.halflings-icon.white.tasks
+                                        |  物料
+        .box.span6
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品类别
+                .box-icon
+                    a#btnNew(href='#')
+                        i.halflings-icon.plus
+            .box-content
+                form.form-horizontal
+                    fieldset
+                        .row-fluid.sortable
+                            input#cid(type="hidden",name='cid',value='')
+                            .control-group
+                                label.control-label(for='key') 标志位
+                                .controls
+                                    input#inputKey.input-xlarge(type='text', name='key', value='')
+                            .control-group
+                                label.control-label(for='name') 分类名称
+                                .controls
+                                    input#inputName.input-xlarge(type='text', name='name', value='')
+                        .form-actions
+                            button#save.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button#reset.btn(type='reset') 取消重填
+
+block script
+    script.
+        $(function () {
+            var btnSave = $('#save'), btnReset = $('#reset');
+            var editId, postType;
+            $('tr').on("click", function (e) {
+                var me = $(this);
+                var editKey = me.find('.key').text();
+                var editName = me.find('.name').text();
+                editId = me.data('id');
+
+                $('#cid').val(editId);
+                $('#inputKey').val(editKey);
+                $('#inputName').val(editName);
+
+                postType = "edit";
+            });
+
+            btnSave.on('click', function () {
+                var postData = {
+                    key: $("#inputKey").val(),
+                    name: $("#inputName").val()
+                }
+                editId = $('#cid').val();
+                if (editId) {
+                    $.post("/offline/category/edit/" + editId, postData, function (data) {
+                        showMessage(data && data.status == 'ok', null, null, function () {
+                            location.reload();
+                            // todo: table更新tr
+                            console.log('edit ok');
+                        });
+                    });
+                }
+                else {
+                    $.post("/offline/category/add", postData, function (data) {
+                        showMessage(data && data.status == 'ok', null, null, function () {
+                            location.reload();
+                            // todo: table添加tr
+                            console.log('add ok');
+                        });
+                    });
+                }
+            });
+
+            $("#btnNew").on('click', function () {
+                $('#cid').val('');
+                $('#inputKey').val('');
+                $('#inputName').val('');
+                postType = "add";
+            });
+
+            $(".delCategory").on("click", function () {
+                var id = $(this).data('id');
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该类别？', null, function () {
+                        var data = "active=false";
+                        $.post("/offline/category/del/" + id, data, function (res) {
+                            if (res && res.status == "ok") {
+                                location.href = "/offline/category";
+                            } else {
+                                // $("#errorInfo").show();
+                                alert("删除失败，请重试。")
+                            }
+                        });
+                    });
+                }
+            });
+        });

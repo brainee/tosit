@@ -1,0 +1,45 @@
+extends ../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline') 总览
+    .row-fluid
+        a.quick-button.metro.yellow.span2(href='./users')
+            i.icon-group
+            p 注册会员
+            span.badge 237
+        a.quick-button.metro.green.span2(href='./products')
+            i.icon-barcode
+            p 产品数量
+            span.badge 12
+        a.quick-button.metro.red.span2(href='./activities')
+            i.icon-fire
+            p 活动参与
+            span.badge 46
+        a.quick-button.metro.blue.span2(href='./orders')
+            i.icon-shopping-cart
+            p 订单数量
+            span.badge 13
+        a.quick-button.metro.pink.span2(href='./appointments')
+            i.icon-envelope
+            p 预约数量
+            span.badge 88
+        a.quick-button.metro.black.span2(href='#')
+            i.icon-calendar
+            p 预约日历
+        .clearfix
+    #myModal.modal.hide.fade
+        .modal-header
+            button.close(type='button', data-dismiss='modal') ×
+            h3 Settings
+        .modal-body
+            p Here settings can be configured...
+        .modal-footer
+            a.btn(href='#', data-dismiss='modal') Close
+            a.btn.btn-primary(href='#') Save changes
+
+

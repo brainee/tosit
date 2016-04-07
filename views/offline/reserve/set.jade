@@ -1,0 +1,61 @@
+//
+   Created by alex on 15/10/21.
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='#') 预约档期配置
+
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                    i.halflings-icon.edit
+                    span.break
+                    | 预约档期配置
+                .box-icon
+                    a.btn-setting(href='#')
+                        i.halflings-icon.wrench
+                    a.btn-minimize(href='#')
+                        i.halflings-icon.chevron-up
+                    a.btn-close(href='#')
+                        i.halflings-icon.remove
+            .box-content
+                #message.alert.hidden
+                    button.close(type='button', data-dismiss='alert') &times;
+                    strong 操作成功！
+                from.form-horizontal
+                    fieldset
+                        .control-group
+                            label.control-label(for='startTime') 开始时间
+                            .controls
+                                input#startTime(type='text',name='startTime')
+                                span &nbsp;&nbsp;&nbsp;&nbsp;
+                                i.icon-help
+                                span.help-inline （日期忽略）
+                        .control-group
+                            label.control-label(for='endTime') 结束时间
+                            .controls
+                                input#endTime(type='text',name='endTime')
+                                span &nbsp;&nbsp;&nbsp;&nbsp;
+                                i.icon-help
+                                span.help-inline （日期忽略）
+                        .control-group
+                            label.control-label(for='timeRange') 间隔时间段
+                            .controls
+                                input#timeRange(type='text',name='timeRange')
+                                span &nbsp;&nbsp;&nbsp;&nbsp;
+                                i.icon-help
+                                span.help-inline （单位：分钟）
+                        .control-group
+                            label.control-label(for='customer') 接待人数
+                            .controls
+                                input#customer(type='text',name='customer')
+                        .form-actions
+                            button#save.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button.btn(type='reset') 取消重填

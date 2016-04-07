@@ -1,0 +1,168 @@
+//Created by lmmeng on 2015-10-26.
+extends ../../shard/layout-manage
+block head
+    style.
+        .form-horizontal .control-label {
+            width: 100px;
+        }
+
+        .form-horizontal .controls {
+            margin-left: 110px;
+        }
+
+        .form-horizontal .form-actions {
+            padding-left: 40px;
+        }
+
+        .radio, .checkbox {
+            padding-left: 5px;
+        }
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+            i.icon-angle-right
+        li
+            a(href='/offline/category') 产品类别管理
+            i.icon-angle-right
+        li
+            a(href='/offline/material/#{key}') [#{key}] - 产品物料列表
+
+    include ../../includes/pop
+    .row-fluid.sortable
+        .box.span7
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品物料列表
+            .box-content
+                if !(material)
+                    .alert.alert-info 暂无数据
+                else
+                    table.table.table-bordered.table-striped
+                        tr
+                            th 产品分类
+                            th 物料类型
+                            th 物料标签
+                            th 显示方式
+                            th 修改时间
+                            th 操作
+                        each obj in material
+                            tr.item(data-id="#{obj._id}")
+                                td=obj.category
+                                td=obj.class
+                                td=obj.label
+                                td=obj.type
+                                td=obj.update
+                                td.center
+                                    a.btn.btn-mini.btn-warning(href='/offline/material/#{key}/items/#{obj._id}',title='物料子项')
+                                        i.halflings-icon.white.tasks
+                                        |  物料子项
+                                    | &nbsp;
+                                    a.btn.btn-mini.btn-danger.delStyle(data-id='#{obj._id}')
+                                        i.halflings-icon.white.trash
+        .box.span5
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品物料
+                .box-icon
+                    a#btnNew(href='#')
+                        i.halflings-icon.plus
+            .box-content
+                form.form-horizontal()
+                    fieldset
+                        .row-fluid.sortable
+                            .control-group
+                                label.control-label(for='category') 产品分类
+                                .controls
+                                    input#mid(type='hidden')
+                                    input#category(type='text',name='category',readonly='true',value='#{key}')
+                            .control-group
+                                label.control-label(for='class') 物料类型
+                                .controls
+                                    input#class.input-medium(type='text', name='class', value='')
+                            .control-group
+                                label.control-label(for='label') 物料标签
+                                .controls
+                                    input#label.input-medium(type='text', name='label', value='')
+                            .control-group
+                                label.control-label(for='') 显示形式
+                                .controls
+                                    label.radio(for='picRadio')
+                                        input#picRadio(type='radio',name='type', value='图片',checked='true')
+                                        | 图片
+                                    label.radio(for='wordRadio')
+                                        input#wordRadio(type='radio',name='type', value='文字')
+                                        | 文字
+                        .form-actions
+                            button#save.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button#reset.btn(type='reset') 取消重填
+block script
+    script.
+        $(function () {
+            var btnSave = $('#save'), btnReset = $('#reset');
+            var editId, postType;
+            $('tr').on("click", function (e) {
+                var me = $(this),
+                    item = me.find('td');
+                editId = me.data('id');
+                $('#mid').val(editId);
+                //$('#category').val(item[0].innerText);
+                $('#class').val(item[1].innerText);
+                $('#label').val(item[2].innerText);
+                if (item[3].innerText == "文字") {
+                    $("#picRadio").parents("span").removeClass("checked");
+                    $("#wordRadio").parents("span").addClass("checked");
+                }
+                else {
+                    $("#wordRadio").parents("span").removeClass("checked");
+                    $("#picRadio").parents("span").addClass("checked");
+                }
+                postType = "edit";
+            });
+            btnSave.on('click', function () {
+                var postData = $('form').serialize();
+                postData.type = $(':radio[name=type]').val();
+                editId = $('#mid').val();
+                console.log(editId);
+                if (editId) {
+                    $.post("/offline/material/edit/" + editId, postData, function (data) {
+                        showMessage(data && data.status == 'ok', null, null, function () {
+                            location.reload();
+                        });
+                    });
+                }
+                else {
+                    $.post("/offline/material/add", postData, function (data) {
+                        showMessage(data && data.status == 'ok', null, null, function () {
+                            location.reload();
+                        });
+                    });
+                }
+            });
+            $("#btnNew").on('click', function () {
+                $('#mid,#class,#label,input:radio').val('');
+                postType = "add";
+            });
+            $(".delStyle").on("click", function () {
+                var id = $(this).data('id');
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该物料？', null, function () {
+                        var data = "active=false";
+                        $.post("/offline/material/del/" + id, data, function (res) {
+                            showMessage (res && res.status == 'ok',null,null, function () {
+                                location.reload();
+                            });
+                        });
+                    });
+                }
+            });
+        });

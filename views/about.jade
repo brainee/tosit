@@ -1,0 +1,21 @@
+extends ./shard/layout
+block content
+    .about
+        .container
+            .row
+                .col-sm-3
+                    include includes/aboutSideMenu
+                .col-sm-9
+                    div(class="inset-main")
+                        if data
+                            h3.inset-title
+                                strong= data.title
+                            .inset-content !{data.content}
+                        else
+                            h3.inset-title
+                                strong 无法找到该内容
+                            .inset-content
+                                | 内容存在或者被删除，请联系网站管理员！
+
+block script
+    script(src='/js/view/menu.js')

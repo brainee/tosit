@@ -1,0 +1,77 @@
+extends shard/layout
+block content
+        .jumbotron#jumbotron
+            img(src="images/meldor/online/product-banner-1.jpg", alt="")
+        .container
+            .masthead#masthead
+                strong 英伦风尚，时尚首选
+                span BRITISH FASHION, FASHION IS PREFERRED
+        .filterbar#filterbar
+            .filterbar-inner
+                .container
+                    ul.filter-list.clearfix
+                        -var n = 0
+                        each cat in cats
+                            if n === 0
+                                -{n++}
+                                li.dropdown.first
+                                    a(href="javascript:;")
+                                        span !{cat.cat}
+                                            i.icon-triangle
+                                    ul.dropdown-menu
+                                        each item in cat.list
+                                            li
+                                                a(href="product?t=#{cat.type}&cat=#{item.name}") #{item.name}
+                            else
+                                li.dropdown
+                                    a(href="javascript:;")
+                                        span !{cat.cat}
+                                            i.icon-triangle
+                                    ul.dropdown-menu
+                                        each item in cat.list
+                                            li
+                                                a(href="product?t=#{cat.type}&cat=#{item.name}") #{item.name}
+        input#pageIndex(type="hidden", value="#{page}")
+        input#productCount(type="hidden", value="#{count}")
+        input#searchVal(type="hidden", value="#{key}")
+        .product#product
+            .container
+                .row#productWrap
+                    if data && data.length > 0
+                        //.product-list
+                        each item in data
+                            .col-sm-6.col-md-4
+                                a(href="/product/#{item._id}").product-item
+                                    if item && item.images && item.images.length > 0
+                                        img(src="#{item.images[0].url}",alt="#{item.images[0].alt}")
+                                    else
+                                        img(src="images/meldor/online/product-1.jpg")
+                                    .info
+                                        p.title #{item.name}
+                                        p.desc #{item.subTitle}
+                                        .other
+                                            span.price
+                                                em &yen;
+                                                | #{item.originPrice}
+                    else
+                        .col-sm-12
+                            .empty-box
+                                .empty-con.tc
+                                    h5 暂无数据~
+                                    //-.empty-btn
+                                        a.btn.btn-red(href="javascript:;") 返回首页
+                //-.row
+                    .col-sm-12
+                        .pager
+                            - var pageCount = Math.ceil(count/pageSize)
+                            span 共#{count}件商品 #{page}/#{pageCount} 页
+                            a(href="javascript:;").prev.disabled 上一页
+                            a(href="javascript:;").current 1
+                            a(href="javascript:;") 2
+                            a(href="javascript:;") 3
+                            span.ellipsis ...
+                            a(href="javascript:;") 8
+                            a(href="javascript:;").next 下一页
+
+block script
+    script(src='/js/view/product.js')

@@ -1,0 +1,84 @@
+//Created by alex on 15/9/4.
+extends ../../shard/layout-manage
+block content
+    include ../../includes/pop
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='#') 注册会员列表
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                i.halflings-icon.user
+                span.break
+                | 注册会员
+                .box-icon
+                    a.btn-setting(href='#')
+                        i.halflings-icon.wrench
+                    a.btn-minimize(href='#')
+                        i.halflings-icon.chevron-up
+                    a.btn-close(href='#')
+                        i.halflings-icon.remove
+            .box-content
+                table.table.table-striped.table-bordered.bootstrap-datatable.datatable
+                    thead
+                        tr
+                            th 登陆名
+                            th 昵称
+                            th 手机号
+                            th 邮箱
+                            th 注册日期
+                            th 修改日期
+                            th 状态
+                            th 操作
+                    tbody
+                        each val,index in data
+                            tr
+                                td #{val.loginname}
+                                td.center #{val.nickname}
+                                td.center #{val.phone}
+                                td.center #{val.email}
+                                td.center #{val.create}
+                                td.center #{val.update}
+                                td.center
+                                    if val.active
+                                        span.label.label-success 正常
+                                    else
+                                        span.label.label-important 禁用
+                                td.center
+                                    a.btn.btn-mini.btn-success(href='./users/detail/#{val._id}')
+                                        i.halflings-icon.white.zoom-in
+                                    | &nbsp;
+                                    a.btn.btn-mini.btn-info(href='./users/edit/#{val._id}')
+                                        i.halflings-icon.white.edit
+                                    | &nbsp;
+                                    a.btn.btn-mini.btn-danger.delUser(id='#{val._id}')
+                                        i.halflings-icon.white.trash
+
+block script
+    script(type="text/javascript").
+        $(function () {
+            $(".delUser").on("click", function () {
+                var id = this.id;
+                if(showModal && typeof showModal === 'function'){
+                    showModal('删除确认', '是否真的删除该用户？', null, function () {
+                        var data = "active=false";
+                        $.post("/offline/users/del/" + id, data, function (res) {
+                            if (res == "ok") {
+                                location.href = "/offline/users";
+                            } else {
+                                // $("#errorInfo").show();
+                                alert("删除失败，请重试。")
+                            }
+                        });
+                    });
+                }
+            });
+        });
+
+
+

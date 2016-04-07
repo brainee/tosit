@@ -1,0 +1,100 @@
+- var isLogin = !!locals.user
+- var nav = [{"name":"首页","key":""},{"name":"品牌介绍","key":"about/brand"},{"name":"产品","key":"product"},{"name":"联系我们","key":"about/contact"}];
+
+.topbar#topbar
+    .container
+        .row
+            //-.fl
+                //    a(href="javascript:;"): i.ico-main.i-main-wx
+                //    a(href="javascript:;"): i.ico-main.i-main-qq
+                //    a(href="javascript:;"): i.ico-main.i-main-sina
+                //.fr
+            .col-sm-12
+                .topbar-login.pull-right
+                    if isLogin
+                        - var displayName = locals.user.nickname ||  locals.user.loginname || locals.user.phone
+                        span &nbsp;你好，
+                            a#loginUser(href="/user/info") #{displayName}
+                        | &nbsp;欢迎来到（UDL）全球私人定制第一平台！
+                        span.login-action
+                            if locals.user.is_admin
+                                a(href="/offline",target="_blank")
+                                    i.glyphicon.glyphicon-tree-deciduous
+                                    | 后台管理
+                                span |
+                            a(href="/user/info")
+                                //- i.ico-main.i-main-user
+                                span.glyphicon.glyphicon-user
+                                | 会员中心
+                            span |
+                            a(href="/user/orders")
+                                | 我的订单
+                            span |
+                            a(href="/logout") 退出
+                    else
+                        span.login-action
+                            a(href="/login#reg") 注册
+                            span |
+                            a(href="/login#login") 登录
+.header#header
+    .container
+        .row
+            .col-md-6.col-sm-3.hidden-xs
+                a.logo#logo(href="/", title="全球私人定制第一平台！")
+            .col-md-6.col-sm-9
+                .pull-right.row
+                    .col-sm-8.col-xs-10
+                        form.search#searchForm(method="get", action="/product")
+                            .input-group
+                                input.form-control#searchTxt(type="text", placeholder="西装", name='key', autocomplete="off")
+                                span.input-group-btn
+                                    button.btn.btn-default#searchBtn(type="button")
+                                        //- i.ico-main.i-main-search
+                                        span.glyphicon.glyphicon-search
+                    .col-sm-4.col-xs-2.shoping-cart-outer
+                        a.shoping-cart(href="/user/changing_room")
+                            //- i.ico-main.i-main-cart
+                            span.glyphicon.glyphicon-shopping-cart
+                            span #{locals.cartCount}
+                            b.hidden-xs 去试衣间结算
+
+                   //- .row
+                        .col-sm-12
+                            ul.nav#nav
+                                each item in nav
+                                    li
+                                        a(href="/#{item.key}") #{item.name}
+
+        nav.navbar
+            .navbar-header
+                button.navbar-toggle.collapsed(type="button",data-toggle="collapse",data-target="#bs-example-navbar-collapse-1",aria-expanded="false")
+                    span.sr-only Toggle navigation
+                    span.icon-bar
+                    span.icon-bar
+                    span.icon-bar
+                a.navbar-brand(href='#') MELDOR
+            .collapse.navbar-collapse#bs-example-navbar-collapse-1
+                ul.nav.navbar-nav
+                    each item in nav
+                        li
+                            a(href="/#{item.key}") #{item.name}
+                    //-li.active
+                        a(href="#")
+                                | Link
+                                span.sr-only (current)
+                        li
+                            a(href="#") Link
+                        li.dropdown
+                            a.dropdown-toggle(href="#",data-toggle="dropdown", role="button", aria-haspopup="true",aria-expanded="false")
+                                | Dropdown
+                                span.carte
+                            ul.dropdown-menu
+                                li
+                                    a(href="#") Action
+                                li.divider(role="separator")
+                                li
+                                    a(href="#") Another Action
+                        li
+                            a(href="#") Link
+
+

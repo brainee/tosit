@@ -1,0 +1,37 @@
+//
+   Created by koyoshiro on 15/10/2.
+extends ../shard/layout
+block content
+    .user
+        .container
+            .row
+                .col-sm-3
+                    include ../includes/ucSideMenu
+                .col-sm-9
+                    h3.inset-title
+                        strong
+                            | !{subTitle}
+                    .inset-content
+                        form.form-horizontal#regForm
+                            .form-group
+                                label.col-sm-2.control-label 手机号
+                                .col-sm-5
+                                    input.form-control#txtMobile(type="number",placeholder="手机号",name="tel")
+                            .form-group
+                                label.col-sm-2.control-label 原密码
+                                .col-sm-5
+                                    input.form-control#oldpwd(type="password",placeholder="原密码",name="passwd")
+                            .form-group
+                                label.col-sm-2.control-label 新密码
+                                .col-sm-5
+                                    input.form-control#pwd(type="password",placeholder="密码",name="passwd")
+                            .form-group
+                                label.col-sm-2.control-label 再输一次
+                                .col-sm-5
+                                    input.form-control#pwdag(type="password",placeholder="再输一次",name="passwdag")
+                            .form-group
+                                .col-sm-5.col-sm-offset-2
+                                    button.btn.btn-primary#modify 确认修改
+block script
+    script(src='/js/view/menu.js')
+    script(src='/js/view/change_pwd.js')

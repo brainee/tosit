@@ -1,0 +1,118 @@
+//Created by alex on 15/9/4.
+extends ../../shard/layout-manage
+block head
+    style.
+        .form-horizontal .control-label {
+            width: 100px;
+        }
+
+        .form-horizontal .controls {
+            margin-left: 110px;
+        }
+
+        .form-horizontal .form-actions {
+            padding-left: 110px;
+        }
+
+        .radio, .checkbox {
+            padding-left: 5px;
+        }
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+            i.icon-angle-right
+        li
+            a(href='#') 产品物料管理
+    include ../../includes/pop
+    .row-fluid.sortable
+        .box.span2
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 产品类别
+            .box-content
+                if categories && categories.length > 0
+                    table.table.table-bordered.table-striped
+                        each cate in categories
+                            tr.trCategory(data-key="#{cate.key}")
+                                td #{cate.name}
+                else
+                    .alert.alert-info 暂无数据
+        .box.span3
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 物料类型
+                .box-icon.right-align
+                    a#addClass(href='#')
+                        i.halflings-icon.plus
+            .box-content
+                #al-class.alert.alert-warning 请选择产品类别
+                table#tbClass.table.table-bordered.table-striped
+        .box.span3
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span.break
+                    | 物料列表
+                .box-icon
+                    a#addItem(href='#')
+                        i.halflings-icon.plus
+            .box-content
+                #al-items.alert.alert-warning 请选择物料类型
+                table#tbItem.table.table-bordered.table-striped
+        .box.span4
+            .box-header
+                h2
+                    i.halflings-icon.align-justify
+                    span#editTitle.break  编辑
+            .box-content
+                form#frmClass.form-horizontal
+                    fieldset
+                        .row-fluid.sortable
+                            .control-group
+                                label.control-label(for='class') 物料类别
+                                .controls
+                                    input#category(type='hidden',name='category')
+                                    input#class.input-medium(type='text', name='class', value='')
+                            .control-group
+                                label.control-label(for='label') 物料名称
+                                .controls
+                                    input#label.input-medium(type='text', name='label', value='')
+                            .control-group
+                                label.control-label(for='') 显示形式
+                                label.radio
+                                    input#picRadio(type='radio',name='type', value='图片',checked='true')
+                                    | 图片
+                                label.radio
+                                    input#wordRadio(type='radio',name='type', value='文字')
+                                    | 文字
+                        .form-actions
+                            button#firstSave.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button#firstReset.btn(type='reset') 取消重填
+                form#frmItems.form-horizontal(style='display:none')
+                    fieldset
+                        .row-fluid.sortable
+                            .control-group
+                                label.control-label(for='name') 物料名称
+                                .controls
+                                    input#index(type='hidden',name='index')
+                                    input#name.input-medium(type='text', name='name', value='')
+                            .control-group
+                                label.control-label(for='icon') 物料图片
+                                .controls
+                                    input#icon.input-medium(type='file', name='icon', value='')
+                        .form-actions
+                            button#secondSave.btn.btn-primary(type='button') 保存
+                            | &nbsp;
+                            button#secondReset.btn(type='reset') 取消重填
+block script
+    script(src='/js/view/offline/material.js')

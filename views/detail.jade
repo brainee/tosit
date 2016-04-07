@@ -1,0 +1,169 @@
+- var isLogin = !!locals.user
+extends shard/layout
+block content
+    if !data
+        h3 该产品已下线
+    else
+        .detail
+            .container
+                .crumbs
+                    a(href="/") 首页
+                    span -
+                    a(href="/product?t=category&cat=#{data.categories}") #{data.categories}
+                    span -
+                    span #{data.name}
+                .detail-meta.clearfix
+                    .row
+                        .col-sm-5
+                            .preview
+                                if data && data.images && data.images.length > 0
+                                    .flexslider.booth#slider
+                                        ul.slides
+                                            each img in data.images
+                                                li
+                                                    //img(src="#{data.images[0].url}",alt="#{data.images[0].alt}")
+                                                    img(src="#{img.url}",alt="#{img.alt}")
+                                    .flexslider.thumb#carousel
+                                        ul.slides
+                                            each img in data.images
+                                                li
+                                                    img(src="#{img.url}")
+                                    //-
+                                        .booth
+                                            img(src="#{data.images[0].url}",alt="#{data.images[0].alt}")
+                                        .thumb
+                                            .thumb-inner
+                                                ul.clearfix
+                                                    each img,i in data.images
+                                                        if i == 0
+                                                            li.current
+                                                                a(href="javascript:;")
+                                                                    img(src="#{img.thumbUrl}", data-bigimg="#{img.url}")
+                                                        else
+                                                            li
+                                                                a(href="javascript:;")
+                                                                    img(src="#{img.thumbUrl}", data-bigimg="#{img.url}")
+
+                                            a.thumb-prev(href="javascript:;")
+                                                i.ico-main.i-main-prev
+                                            a.thumb-next(href="javascript:;")
+                                                i.ico-main.i-main-next
+                        .col-sm-7
+                            .property
+                                h2.name #{data.name}
+                                p.desc #{data.subTitle}
+                                .panel
+                                    p
+                                        strong 价格
+                                        del.price
+                                            em &yen;
+                                            | #{data.originPrice}
+                                    p
+                                        strong 参考价
+                                        span.price
+                                            em &yen;
+                                            | #{data.refPrice}
+                                    p.newp
+                                        strong 本店活动
+                                        | #{data.activityInfo}
+                                // 物料开始
+                                .prop.clearfix.prop-col-2
+                                    if !materials
+                                        span 物料不存在
+                                    else
+                                        each material,index in materials
+                                            - var mt = material.type == '图片'
+                                            - var icon = material.items.length > 0 && material.items[0].icon ? material.items[0].icon : ''
+                                            if mt
+                                                dl.dropdown
+                                                    dt #{material.label}：
+                                                    dd
+                                                        span.select-icon.select-icon-active
+                                                            img(src='#{icon}')
+                                                        span#bagType.select-txt=material.class
+                                                        .dropdown-menu
+                                                            h4 #{material.label}：
+                                                            ul.clearfix
+                                                                if !material
+                                                                    li
+                                                                        span 物料选项不存在，请联系管理员后台添加
+                                                                else
+                                                                    each item,index in material.items
+                                                                        li
+                                                                            span.select-icon
+                                                                                img(src="#{item.icon}")
+                                                                            span.select-txt=item.name
+                                            else
+                                                dl.dropdown.dropdown-txt.lighthigh
+                                                    dt #{material.label}：
+                                                    dd
+                                                        span.select-icon.select-icon-active
+                                                            | #{material.items.length > 0 ? material.items[0].name : '缺少'}
+                                                            i.icon-select-state
+                                                        span#bagType.select-txt=material.class
+                                                        .dropdown-menu
+                                                            h4 #{material.label}：
+                                                            ul.clearfix
+                                                                if !material
+                                                                    li
+                                                                        span 物料选项不存在，请联系管理员后台添加
+                                                                else
+                                                                    each item,index in material.items
+                                                                        li
+                                                                            span.select-icon
+                                                                                | #{item.name}
+                                                                            spaen.select-txt=item.name
+                                .action
+                                    a(href="javascript:void(0)")#addCart.btn.btn-cart 加入试衣间
+                                    a(href="../reserve/visit/#{data._id}").btn.btn-primary 上门量体
+                                    a(href="../reserve/store/#{data._id}").btn.btn-info 预约到店
+                .detail-box#j_detail_box
+                    .container
+                        .tab-trigger
+                            .tab-trigger-inner
+                                a(href="#home").current
+                                    span 商品详情
+                                a(href="#store")
+                                    span 规格参数
+                                a(href="#cart")
+                                    span 售后服务
+                        .tab-content
+                            .tab-content-inner
+                                #home.detail-container
+                                    | !{data.info}
+                                #store.detail-container
+                                    | !{data.spec}
+                                #cart.detail-container
+                                    | !{data.postSale}
+    #myModal.modal.fade(tabindex='-1',role='dialog',aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+            .modal-content
+                .modal-header
+                    button.close(type='button',data-dismiss='modal',aria-label='关闭')
+                        span(aria-hidden='true') &times;
+                    h4.modal-title 提示
+                .modal-body
+                .modal-footer
+                    button.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button',data-dismiss='modal') 确定
+    input#isLogin(type='hidden', value='#{isLogin}')
+    input#dataCategories(type='hidden', value='#{data.categories}')
+    input#dataId(type='hidden', value='#{data._id}')
+
+block style
+    link(rel='stylesheet', href='/css/flexslider.css')
+
+block script
+    script(src="/js/view/plugin/jquery.flexslider-min.js")
+    script(src='/js/view/product_detail.js')
+
+
+
+
+
+
+
+
+
+
+

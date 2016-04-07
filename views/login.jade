@@ -1,0 +1,70 @@
+extends shard/layout
+block content
+
+    .login
+        .container
+            .row
+                .col-sm-7.hidden-xs
+                    .login-adpic
+                        img(src="/images/meldor/online/reg-pic.png")
+                .col-sm-5
+                    .login-box#j_loginBox
+                        h3.login-box-title
+                            | MELDOR
+                            span
+                                | 还没有账号，
+                                a(href="/login#reg") 立即注册
+                        form#loginForm.form-horizontal(action='/login',method='post')
+                            .form-group
+                                label.col-sm-3.control-label 手机号
+                                .col-sm-9
+                                    input.form-control(type="number",placeholder="手机号",name="tel")
+                            .form-group
+                                label.col-sm-3.control-label 密码
+                                .col-sm-9
+                                    input.form-control(type="password",placeholder="密码",name="passwd")
+                            .form-group
+                                .col-sm-9.col-sm-offset-3
+                                    a.form-link(href="/find") 忘记密码？
+                                    //- a.form-link(href="#reg") 注册会员
+                            .form-group
+                                .col-sm-9.col-sm-offset-3
+                                    p.tiptext(style="display:none;")
+                                    input(type="button", value="登录").btn.btn-primary.login-btn#btnLogin
+
+                    .login-box#j_regBox
+                        h3.login-box-title
+                            | MELDOR
+                            span
+                                | 已有账号，
+                                a(href="/login#login") 立即登录
+                        form#regForm.form-horizontal(action='/reg', method='post')
+                            .form-group
+                                label.col-sm-3.control-label 手机号
+                                .col-sm-9
+                                    .input-group
+                                        input.form-control#txtMobile(type="number",placeholder="手机号",name="tel")
+                                        span.input-group-btn
+                                            //- 不可点状态 添加class  disabled
+                                            a.btn.btn-primary#btnYzm(type="button") 获取验证码
+                            .form-group
+                                label.col-sm-3.control-label 密码
+                                .col-sm-9
+                                    input.form-control#pwd(type="password",placeholder="密码",name="passwd")
+                            .form-group
+                                label.col-sm-3.control-label 确认密码
+                                .col-sm-9
+                                    input.form-control#pwdag(type="password",placeholder="确认密码",name="passwdag")
+                            .form-group.form-group-verify
+                                label.col-sm-3.control-label 验证码
+                                .col-sm-4
+                                    input.form-control(placeholder="手机验证码",name="yzm")
+                            .form-group
+                                .col-sm-9.col-sm-offset-3
+                                    p.tiptext(style="display:none;")
+                                    input(type="button", value="注册并登录").btn.btn-primary.login-btn#btnReg
+
+block script
+    script(src='/js/view/login.js')
+
+

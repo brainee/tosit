@@ -1,0 +1,233 @@
+doctype html
+html(lang='en')
+    head
+        // start: Meta
+        meta(charset='utf-8')
+        title 极尚万服后台管理
+        //meta(name='description', content='Bootstrap Metro Dashboard')
+        //meta(name='author', content='Dennis Ji')
+        //meta(name='keyword', content='Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+        // end: Meta
+        // start: Mobile Specific
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        // end: Mobile Specific
+        // start: CSS
+        link#bootstrap-style(href='/offline/css/bootstrap.min.css', rel='stylesheet')
+        link(href='/offline/css/bootstrap-responsive.min.css', rel='stylesheet')
+        link#base-style(href='/offline/css/style.css', rel='stylesheet')
+        link#base-style-responsive(href='/offline/css/style-responsive.css', rel='stylesheet')
+        //link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext', rel='stylesheet', type='text/css')
+        // end: CSS
+        // The HTML5 shim, for IE6-8 support of HTML5 elements
+        //if lt IE 9
+            script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+            link#ie-style(href='css/ie.css', rel='stylesheet')
+        //if IE 9
+            link#ie9style(href='css/ie9.css', rel='stylesheet')
+        // start: Favicon
+        //link(rel='shortcut icon', href='img/favicon.ico')
+        // end: Favicon
+        link(href='/css/offline.css',rel='stylesheet')
+        block head
+    body
+        - var isLogin = !!locals.user
+        // start: Header
+        .navbar
+            .navbar-inner
+                .container-fluid
+                    a.btn.btn-navbar(data-toggle='collapse', data-target='.top-nav.nav-collapse,.sidebar-nav.nav-collapse')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.brand(href='#index')
+                        span 极尚万服后台管理
+                    // start: Header Menu
+                    .nav-no-collapse.header-nav
+                        ul.nav.pull-right
+                            //li
+                            //    a.btn(href='#')
+                            //        i.halflings-icon.white.wrench
+                            // start: User Dropdown
+                            li.dropdown
+                                a.btn.dropdown-toggle(data-toggle='dropdown', href='#')
+                                    i.halflings-icon.white.user
+                                    - var displayName = locals.user.nickname ||  locals.user.loginname || locals.user.phone
+                                    span=displayName
+                                    span.caret
+                                ul.dropdown-menu
+                                    li.dropdown-menu-title
+                                        span 用户信息
+                                    li
+                                        a(href='/')
+                                            i.halflings-icon.user
+                                            | 返回前台
+                                    li
+                                        a(href='/logout')
+                                            i.halflings-icon.off
+                                            | 退出登录
+                            // end: User Dropdown
+                    // end: Header Menu
+        // start: Header
+        .container-fluid-full
+            .row-fluid
+                // start: Main Menu
+                #sidebar-left.span2
+                    .nav-collapse.sidebar-nav
+                        ul.nav.nav-tabs.nav-stacked.main-menu
+                            li
+                                a(href='/offline')
+                                    i.halflings-icon.white.bar-chart
+                                    span.hidden-tablet  总览
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.barcode
+                                    span.hidden-tablet  产品&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a.submenu(href='/offline/products')
+                                            i.halflings-icon.white.th-list
+                                            span.hidden-tablet  产品管理
+                                    li
+                                        a.submenu(href='/offline/category')
+                                            i.halflings-icon.white.eject
+                                            span.hidden-tablet  产品类别管理
+                                    li
+                                        a.submenu(href='/offline/style')
+                                            i.halflings-icon.white.flag
+                                            span.hidden-tablet  产品风格管理
+                                    //li
+                                    //    a.submenu(href='/offline/material')
+                                    //        i.halflings-icon.white.tasks
+                                    //        span.hidden-tablet  产品物料管理
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.shopping-cart
+                                    span.hidden-tablet  订单&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a(href='/offline/orders')
+                                            i.halflings-icon.white.th-list
+                                            span.hidden-tablet  订单列表
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.user
+                                    span.hidden-tablet  用户&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a(href='/offline/users')
+                                            i.halflings-icon.white.th-list
+                                            span.hidden-tablet  注册会员
+                                    //li
+                                    //    a(href='/offline/record')
+                                    //        i.halflings-icon.white.list-alt
+                                    //        span.hidden-tablet  穿衣人档案
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.time
+                                    span.hidden-tablet  预约&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a(href='/offline/reserves')
+                                            i.halflings-icon.white.th-list
+                                            span.hidden-tablet  预约列表
+                                    li
+                                        a(href='/offline/reserves/settings')
+                                            i.halflings-icon.white.cog
+                                            span.hidden-tablet  预约档期设置
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.fire
+                                    span.hidden-tablet  活动&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a(href='/offline/activities')
+                                            i.halflings-icon.white.fire
+                                            span.hidden-tablet  活动列表
+                                    li
+                                        a(href='/offline/integral')
+                                            i.halflings-icon.white.fire
+                                            span.hidden-tablet  活动积分
+                            li
+                                a.dropmenu(href='#')
+                                    i.halflings-icon.white.cog
+                                    span.hidden-tablet  网站管理&nbsp;&nbsp;
+                                    //span.label.label-important  3
+                                ul
+                                    li
+                                        a(href='/offline/content')
+                                            i.halflings-icon.white.file
+                                            span.hidden-tablet  内容管理
+                                    li
+                                        a(href='/offline/banner')
+                                            i.halflings-icon.white.picture
+                                            span.hidden-tablet  首页图片管理
+                                    li
+                                        a(href='/offline/settings')
+                                            i.halflings-icon.white.cog
+                                            span.hidden-tablet  导航管理
+                // end: Main Menu
+                noscript
+                    .alert.alert-block.span10
+                        h4.alert-heading Warning!
+                        p
+                            | You need to have
+                            a(href='http://en.wikipedia.org/wiki/JavaScript', target='_blank') JavaScript
+                            |  enabled to use this site.
+                // start: Content
+                #content.span10
+                    block content
+                    // /row
+                // /.fluid-container
+                // end: Content
+            // /#content.span10
+        // /fluid-row
+        footer
+            p
+                span(style='text-align:left;float:left')
+                    | © 2015 &nbsp;
+                    a(href='#', alt='黎明工作室') 黎明工作室
+        // start: JavaScript
+        script(src='/offline/js/jquery-1.9.1.min.js')
+        script(src='/offline/js/jquery-migrate-1.0.0.min.js')
+        script(src='/offline/js/jquery-ui-1.10.0.custom.min.js')
+        script(src='/offline/js/jquery.ui.touch-punch.js')
+        script(src='/offline/js/modernizr.js')
+        script(src='/offline/js/bootstrap.min.js')
+        script(src='/offline/js/jquery.cookie.js')
+        script(src='/offline/js/fullcalendar.min.js')
+        script(src='/offline/js/jquery.dataTables.min.js')
+        script(src='/offline/js/excanvas.js')
+        script(src='/offline/js/jquery.flot.js')
+        script(src='/offline/js/jquery.flot.pie.js')
+        script(src='/offline/js/jquery.flot.stack.js')
+        script(src='/offline/js/jquery.flot.resize.min.js')
+        script(src='/offline/js/jquery.chosen.min.js')
+        script(src='/offline/js/jquery.uniform.min.js')
+        script(src='/offline/js/jquery.cleditor.min.js')
+        script(src='/offline/js/jquery.noty.js')
+        script(src='/offline/js/jquery.elfinder.min.js')
+        script(src='/offline/js/jquery.raty.min.js')
+        script(src='/offline/js/jquery.iphone.toggle.js')
+        script(src='/offline/js/jquery.uploadify-3.1.min.js')
+        script(src='/offline/js/jquery.gritter.min.js')
+        script(src='/offline/js/jquery.imagesloaded.js')
+        script(src='/offline/js/jquery.masonry.min.js')
+        script(src='/offline/js/jquery.knob.modified.js')
+        script(src='/offline/js/jquery.sparkline.min.js')
+        script(src='/offline/js/counter.js')
+        //script(src='/offline/js/retina.js')
+        script(src='/offline/js/custom.js')
+        script(src='/offline/js/lodash.min.js')
+        // end: JavaScript
+        script.
+            // 表格栏目选中样式切换
+            $('tr').on("click", function (e) {
+                var me = $(this);
+                me.addClass('active').siblings('tr').removeClass('active');
+            });
+        block script

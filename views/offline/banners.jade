@@ -1,0 +1,99 @@
+//
+   Created by lmmeng on 2015-10-09.
+extends ../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+            i.icon-angle-right
+        li
+            a(href='#') 添加产品图片
+    include ../includes/pop
+    .alert.alert-warning 具体功能开发当中，敬请期待...
+    .row-fluid
+        .box.span12
+            .box-header
+                h2
+                    i.halflings-icon.th
+                    span.break
+                    | 上传图片
+            .box-content
+                form#upload.form-horizontal(method='post',enctype='multipart/form-data')
+                    fieldset
+                        //input#upload(name='upload',type="file", multiple='mutiple')
+                        button#addUpload.btn.btn-success(type='button') 添加
+                        | &nbsp;
+                        input#count(name='count',type='hidden')
+                        button#save.btn.btn-primary(type='button') 上传
+                        | &nbsp;
+                        button.btn(type='reset') 取消重填
+                hr
+                .masonry-gallery
+                    if data && data.images && data.images.length > 0
+                        each img,index in data.images
+                            if img
+                                - var url = img.url?img.url:'',alt=img.alt?img.alt:''
+                                - var attr = {style: 'background:url('+url+')', title: alt};
+                                div(id='image-' + index).masonry-thumb
+                                    a(href='#',data-id='#{img._id}')&attributes(attr)
+                                        img.grayscale(src= url,alt= alt)
+block script
+    script(type="text/javascript").
+        $(function () {
+            var count = 0;
+            $('#addUpload').on('click', function () {
+                count++;
+                var me = $(this);
+                var file = $('<input/>').attr({
+                    id: 'upload' + count,
+                    name: 'upload' + count,
+                    type: 'file',
+                    multiple: 'mutiple'
+                });
+                file.insertBefore(me);
+                $('<br />').insertBefore(me);
+                $('#count').val(count);
+            });
+            $('#save').on('click', function () {
+                var me = $(this),
+                        files = $(':file'),
+                        validate = true;
+                // 做验证
+                $.each(files, function (i, file) {
+                    var $file = $(file);
+                    if (!(file && file.value !== "" && $file.val() !== "")) {
+                        alert('请选择上传图片');
+                        $file.focus();
+                        validate = false;
+                        return false;
+                    }
+                });
+                if (validate) {
+                    $('#upload').submit();
+                }
+            });
+            $('.masonry-gallery .masonry-thumb a').on('mouseenter', function () {
+                //alert('in:'+$(this).data('id'));
+            }).on('mouseout', function () {
+                //alert('out');
+            }).on('click', function () {
+                var me = $(this);
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该产品？', function () {
+                        $.post(location.href + '/del', {imgId: me.data('id')}, function (data) {
+                            if (showMessage && typeof showMessage === 'function') {
+                                showMessage(data && data == 'ok', null, null, function () {
+                                    me.remove();
+                                }, function () {
+                                    alert('fail');
+                                });
+                            }
+                        });
+                    })
+                }
+            });
+        });

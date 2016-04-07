@@ -1,0 +1,11 @@
+//-var sideMenuList = [{cat:"订单中心",list:[{key:"orders",title:"我的订单"},{key:"changing_room",title:"试衣间"}]},{cat:"账户设置",list:[{key:"info",title:"账户信息"},{key:"coupon",title:"我的积分/优惠券"},{key:"changePassword",title:"修改密码"},{key:"record",title:"穿衣人档案"}]}];
+-var sideMenuList = [{key:"info",title:"账户信息"},{key:"orders",title:"我的订单"},{key:"changing_room",title:"试衣间"},{key:"change_pwd",title:"修改密码"}];
+//,{cat:"服务中心",list:[{key:"return",title:"返修/退货"},{key:"subscribe",title:"预约量体"},{key:"stockout",title:"缺货登记"}]}];
+.menu
+    h2
+        span 会员中心
+    dl
+    each item in sideMenuList
+        dd
+            a(href="/user/#{item.key}", title="#{item.title}") #{item.title}
+

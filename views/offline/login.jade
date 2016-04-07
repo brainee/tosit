@@ -1,0 +1,47 @@
+extends ../shard/layout-offline
+block style
+    style(type='text/css').
+        body {
+            background: url(/offline/img/bg-login.jpg) !important;
+        }
+block content
+    .container-fluid-full
+        .row-fluid
+            .row-fluid
+                .login-box
+                    .icons
+                        a(href='offline')
+                            i.halflings-icon.home
+                        a(href='#')
+                            i.halflings-icon.cog
+                    h2 请登录您的帐户
+                    form.form-horizontal(action='/offline/login', method='post')
+                        fieldset
+                            .input-prepend(title='Username')
+                                span.add-on
+                                    i.halflings-icon.user
+                                input#username.input-large.span10(name='username', type='text', placeholder='输入用户名（电子邮箱地址）')
+                            .clearfix
+                            .input-prepend(title='Password')
+                                span.add-on
+                                    i.halflings-icon.lock
+                                input#password.input-large.span10(name='password', type='password', placeholder='输入密码')
+                            .clearfix
+                            label.remember(for='remember')
+                                input#remember(type='checkbox')
+                                | 记住密码
+                            .button-login
+                                button.btn.btn-primary(type='submit') 登入
+                            .clearfix
+                    - var errorMsg = error;
+                        #message.alert(class=(error != 'fail') ? 'hidden' : '' )
+                            button.close(type='button', data-dismiss='alert') &times;
+                            strong
+                            if error == 'fail'
+                                | 登录信息有误，请重试！
+                    hr
+                    h3 密码忘记了?
+                    p
+                        | 没关系
+                        a(href='#') 戳这里
+                        |  重新设置新密码.

@@ -1,0 +1,99 @@
+//Created by alex on 15/9/4.
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline/products') 产品管理
+    include ../../includes/pop
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                    i.halflings-icon.user
+                    span.break
+                    | 产品管理
+                .box-icon
+                    a.btn-setting(href='#')
+                        i.halflings-icon.wrench
+                    a.btn-minimize(href='#')
+                        i.halflings-icon.chevron-up
+                    a.btn-close(href='#')
+                        i.halflings-icon.remove
+            .box-content
+                label
+                    a.btn.btn-danger(href='/offline/products/edit') 添加产品
+                    | &nbsp;
+                    a.btn.btn-success(href='/offline/category') 产品分类管理
+                    | &nbsp;
+                    a.btn.btn-info(href='/offline/style') 产品风格管理
+                    | &nbsp;
+                    //a.btn.btn-warning(href='/offline/material') 产品物料管理
+                table.table.table-striped.table-bordered.bootstrap-datatable.datatable
+                    thead
+                        tr
+                            th 产品编号
+                            th 名称
+                            th 修改日期
+                            th 状态
+                            th 附属信息
+                            th 操作
+                    tbody
+                        each val,index in data
+                            tr
+                                td #{val.code}
+                                td #{val.name}
+                                td.center #{val.update}
+                                td.center
+                                    if val.active
+                                        span.label.label-success 上架
+                                    else
+                                        span.label.label-important 下架
+                                td.center
+                                    a.btn.btn-mini.btn-warning(href='/offline/products/image/#{val._id}',title='产品图片')
+                                        i.halflings-icon.white.picture
+                                        |  产品图片
+                                    | &nbsp;
+                                    //a.btn.btn-mini.btn-info(href='/offline/products/material/#{val._id}',title='产品物料')
+                                    //    i.halflings-icon.white.inbox
+                                    //    |  产品物料
+                                td.center
+                                    a.btn.btn-mini.btn-success(href='/product/#{val._id}',target='_blank',title='预览产品')
+                                        i.halflings-icon.white.zoom-in
+                                    | &nbsp;
+                                    a.btn.btn-mini.btn-info(href='/offline/products/edit/#{val._id}', title='修改产品')
+                                        i.halflings-icon.white.edit
+                                    | &nbsp;
+                                    a.del.btn-mini.btn.btn-danger(href='javascript:;',data-id='#{val._id}',title='删除产品')
+                                        i.halflings-icon.white.trash
+block script
+    script.
+        $(function () {
+            //var message = $('#message'), msgText = message.find('strong');
+            $('.del').on('click', function () {
+                var self = $(this);
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该产品？', function () {
+                        var me = $(this);
+                        $.post('/offline/products/del/' + self.data('id'), function (data) {
+                            if (showMessage && typeof showMessage === 'function') {
+                                showMessage(data && data == 'ok', null, null, function () {
+                                    self.parents('tr').eq(0).remove();
+                                });
+                            }
+                        });
+                    })
+                }
+            });
+        });
+//        if (data && data == 'ok') {
+//            message.addClass('alert-success').removeClass('hidden');
+//            msgText.text('成功删除了一条数据！');
+//            self.parents('tr').eq(0).remove();
+//        } else {
+//            msgText.text('删除失败，请重新尝试！');
+//            message.addClass('alert-error').removeClass('hidden');
+//        }

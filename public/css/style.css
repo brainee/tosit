@@ -1,0 +1,26 @@
+body{ font:14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+.blankTip{ border-color:red; }
+
+.greyBtn{ background-color:grey; border-color:black; }
+
+/*top*/
+.topbar{ height:30px; line-height:30px; min-height:30px; }
+
+.topbar a{ display:inline-block; padding:0 10px; color:#f5f5f5; }
+
+.topbanner{ margin:30px 0 0; }
+
+.topbanner span{ padding:10px 0; line-height:100px; }
+
+.topbanner .logo img{ max-width:100px; }
+
+.mynav{ border-radius:0; background:#f5f5f5; }
+
+.mynav, .mynav a{ margin:0; padding:0; height:30px; line-height:30px; min-height:30px; }
+
+.mynav ul{ margin:0; padding:0; list-style:none; }
+
+.mynav ul li{ margin:0; padding:0 30px; }
+
+.nav > li > a, .navbar-nav > li > a{ padding:0; line-height:30px; }

@@ -1,0 +1,22 @@
+// Created by lmmeng on 2015-11-04.
+extends ../../shard/layout-manage
+block content
+   ul.breadcrumb
+      li
+         i.icon-home
+         a(href='/offline') 后台首页
+         i.icon-angle-right
+      li
+         a(href='/offline/products') 产品管理
+         i.icon-angle-right
+      li
+         a(href='#') 添加产品物料
+   include ../../includes/pop
+   .row-fluid
+      .box.span12
+         .box-header
+            h2
+               i.halflings-icon.th
+               span.break
+               | 添加物料
+         .box-content

@@ -1,0 +1,89 @@
+extends ../../shard/layout-manage
+block head
+    script(type="text/javascript",charset="utf-8",src='/ueditor/ueditor.config.js')
+    script(type="text/javascript",charset="utf-8",src='/ueditor/ueditor.all.min.js')
+    script(type = "text/javascript", charset = "utf-8", src = '/ueditor/lang/zh-cn/zh-cn.js')
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='/offline') 总览
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                    i.halflings-icon.edit
+                    span.break
+                    | 新增图文信息
+                .box-icon
+                    a.btn-setting(href='#')
+                        i.halflings-icon.wrench
+                    a.btn-minimize(href='#')
+                        i.halflings-icon.chevron-up
+                    a.btn-close(href='#')
+                        i.halflings-icon.remove
+            .box-content
+                form.form-horizontal(method='post')
+                    fieldset
+                        .control-group
+                            label.control-label(for='key') 标志位
+                            .controls
+                                input#key(type='text', name='key', value='#{data ? data.key : ""}')
+                                span &nbsp;&nbsp;&nbsp;&nbsp;
+                                small 一个英文单词，用于页面标志
+                        .control-group
+                            label.control-label(for='title') 标题
+                            .controls
+                                input#title.input-xxlarge(type='text', name='title', value='#{data ? data.title : ""}')
+                        //.control-group
+                        //    label.control-label(for='subtitle') 附标题
+                        //    .controls
+                        //        input#subtitle.input-xxlarge(type='text', name='subtitle', value='#{data ? data.subtitle : ""}')
+                        .control-group.hidden-phone
+                            label.control-label(for='editor') 内容
+                            .controls
+                                script(id='editor',type='text/plain')
+                                //textarea#textarea2.cleditor(rows='3')
+                        .form-actions
+                            button.btn.btn-primary(type='button') 保存
+                            button.btn(type='reset') 取消重填
+block script
+    script(type="text/javascript",charset="utf-8",src='/js/util.js')
+    script(type="text/javascript").
+        //实例化编辑器
+        //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
+        $(function () {
+            var ue = UE.getEditor('editor',{textarea:'content'});
+            var content = html_decode('#{data ? data.content : ""}'),
+                    key = '';
+            //console.log(content);
+            ue.ready(function () {
+                if (content && content !== '') {
+                    ue.setContent(content);
+                    key = '#{data ? data.key : ""}';
+                }
+                $('button[type=reset]').click(function () {
+                    ue.setContent('');
+                    $('input').each(obj, function () {
+                        $(this).val('');
+                    });
+                });
+            });
+            var form = $('form');
+            $('.btn-primary').click(function () {
+                var data = form.serialize();
+                var url = '/offline/content/edit';
+                if (key && key !== '') url += '/' + key;
+                //console.log(data.content);
+                $.post(url, data, function (res) {
+                    if(res && res == 'ok'){
+                        location.href = '/offline/content';
+                    }else{
+                        alert("删除失败，请重试。");
+                    }
+                });
+            });
+        });

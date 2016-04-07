@@ -1,0 +1,129 @@
+extends ../shard/layout
+block content
+    .container
+        .inset-content
+            .check-box
+                //-.check-tit
+                    h2 填写并核对订单信息
+                .check-con
+                    //-.check-order-title
+                        h3 穿衣人信息
+                    //-.check-order-con
+                        .record-box
+                            .record-item.current
+                                .record-item-title
+                                    h3
+                                        | 用户一
+                                .record-item-con
+                                    .item
+                                        span.label 姓名：
+                                        .con 用户一
+                                    .item
+                                        span.label 年龄：
+                                        .con 18周岁
+                                    .item
+                                        span.label 身高：
+                                        .con 175cm
+                                    .item
+                                        span.label 体重：
+                                        .con 65kg
+                                    .item
+                                        span.label 胸围：
+                                        .con 50cm
+                                    .item
+                                        span.label 臀围：
+                                        .con 50cm
+                                    .item
+                                        span.label 腰围：
+                                        .con 50cm
+                                i.icon-select-state
+                            .record-item
+                                .record-item-title
+                                    h3
+                                        | 用户二
+                                .record-item-con
+                                    .item
+                                        span.label 姓名：
+                                        .con 用户二
+                                    .item
+                                        span.label 年龄：
+                                        .con 18周岁
+                                    .item
+                                        span.label 身高：
+                                        .con 175cm
+                                    .item
+                                        span.label 体重：
+                                        .con 65kg
+                                    .item
+                                        span.label 胸围：
+                                        .con 50cm
+                                    .item
+                                        span.label 臀围：
+                                        .con 50cm
+                                    .item
+                                        span.label 腰围：
+                                        .con 50cm
+                                i.icon-select-state
+                    .check-order-title
+                        h3 联系人
+                    .check-order-con
+                        dl.dl-horizontal
+                            dt 手机号
+                            dd 13000000000
+                            dt 邮箱
+                            dd 123456@qq.com
+                    .check-order-title
+                        h3 支付信息
+                    .check-order-con
+                        ul.pay-list
+                            li.current
+                                | 微信支付
+                                i.icon-select-state
+                            li
+                                | 支付宝
+                                i.icon-select-state
+                    .check-order-title
+                        h3 商品清单
+                    .check-order-con
+                        .goods-box
+                            - var origin = 0;
+                            each cart in data.cart
+                                - origin += (+cart.items.product.originPrice);
+                                .goods-item
+                                    .goods-item-pic
+                                        a(href="/product/#{cart.items.product._id}", target="_blank", title="#{cart.items.product.name}").pic
+                                            img(src="../../images/meldor/online/product-s-1.jpg", alt="")
+                                    .goods-item-price
+                                        del.price
+                                            | 原价
+                                            em &yen;
+                                            | #{cart.items.product.originPrice}
+                                        span.price
+                                            | 价格
+                                            em &yen
+                                            | #{cart.items.product.refPrice}
+                                    .goods-item-name
+                                        span.goods-cat 西装
+                                        a(href="/product/#{cart.items.product._id}", target="_blank", title="#{cart.items.product.name}").goods-msg #{cart.items.product.name}
+                    .toolbar-box
+                        .select-all
+
+                        .toolbar-box-right
+                            .btn-area
+                                a.btn.btn-red(href="/pay/aliPay/#{data._id}") 提交订单
+                            .price-count
+                                | 总价
+                                span.price
+                                    em &yen;
+                                    | #{data.price}
+                                | 已节省
+                                span.price
+                                    em &yen;
+                                    | #{origin - (+data.price)}
+
+                            .select-count
+                                | 共
+                                span #{data.cart.length}
+                                | 件商品
+
+

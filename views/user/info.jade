@@ -1,0 +1,41 @@
+extends ../shard/layout
+block content
+    .user
+        .container
+            .row
+                .col-sm-3
+                    include ../includes/ucSideMenu
+                .col-sm-9
+                    h3.inset-title
+                        strong
+                            | !{subTitle}
+                    .inset-content
+                        form.form-horizontal#userForm
+                            input(type='hidden',value=data._id)
+                            .form-group
+                                label.col-sm-2.control-label 手机号
+                                .col-sm-5
+                                    input.form-control(type='text',value=data.phone,name='phone')
+                            .form-group
+                                label.col-sm-2.control-label 昵称
+                                .col-sm-5
+                                    input.form-control(type='text',value=data.nickname,name='nickname')
+                            .form-group
+                                label.col-sm-2.control-label 登陆名
+                                .col-sm-5
+                                    input.form-control(type='text',value=data.loginname,name='loginname')
+                            .form-group
+                                label.col-sm-2.control-label 邮箱
+                                .col-sm-5
+                                    input.form-control(type='text',value=data.email,name='email')
+                            .form-group
+                                label.col-sm-2.control-label QQ
+                                .col-sm-5
+                                    input.form-control(type='text',value=data.qq,name='qq')
+                            .form-group
+                                .col-sm-5.col-sm-offset-2
+                                    button.btn.btn-primary#btnSave 保存
+
+block script
+    script(src='/js/view/menu.js')
+    script(src='/js/view/user_info.js')

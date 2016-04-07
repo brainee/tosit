@@ -1,0 +1,177 @@
+doctype html
+html(lang='en')
+  head
+    // start: Meta
+    meta(charset='utf-8')
+    | &#x9;
+    title Bootstrap Metro Dashboard by Dennis Ji for ARM demo
+    | &#x9;
+    meta(name='description', content='Bootstrap Metro Dashboard')
+    | &#x9;
+    meta(name='author', content='Dennis Ji')
+    | &#x9;
+    meta(name='keyword', content='Metro, Metro UI, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina')
+    // end: Meta
+    // start: Mobile Specific
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // end: Mobile Specific
+    // start: CSS
+    link#bootstrap-style(href='../css/bootstrap.min.css', rel='stylesheet')
+    | &#x9;
+    link(href='../css/bootstrap-responsive.min.css', rel='stylesheet')
+    | &#x9;
+    link#base-style(href='../css/style.css', rel='stylesheet')
+    | &#x9;
+    link#base-style-responsive(href='../css/style-responsive.css', rel='stylesheet')
+    | &#x9;
+    link(href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext', rel='stylesheet', type='text/css')
+    // end: CSS
+    // The HTML5 shim, for IE6-8 support of HTML5 elements
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+      |     
+      link#ie-style(href='../css/ie.css', rel='stylesheet')
+    //if IE 9
+      link#ie9style(href='../css/ie9.css', rel='stylesheet')
+    // start: Favicon
+    link(rel='shortcut icon', href='img/favicon.ico')
+    // end: Favicon
+    style(type='text/css').
+      body { background: url(../img/bg-login.jpg) !important; }
+  body
+    .container-fluid-full
+      .row-fluid
+        .row-fluid
+          .login-box
+            .icons
+              a(href='index.html')
+                i.halflings-icon.home
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+              a(href='#')
+                i.halflings-icon.cog
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            h2 Login to your account
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            form.form-horizontal(action='index.html', method='post')
+              fieldset
+                .input-prepend(title='Username')
+                  span.add-on
+                    i.halflings-icon.user
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  input#username.input-large.span10(name='username', type='text', placeholder='type username')
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .clearfix
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .input-prepend(title='Password')
+                  span.add-on
+                    i.halflings-icon.lock
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  input#password.input-large.span10(name='password', type='password', placeholder='type password')
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .clearfix
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                label.remember(for='remember')
+                  input#remember(type='checkbox')
+                  | Remember me
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .button-login
+                  button.btn.btn-primary(type='submit') Login
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                .clearfix
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            hr
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            h3 Forgot Password?
+            | &#x9;&#x9;&#x9;&#x9;&#x9;
+            p
+              | No problem, 
+              a(href='#') click here
+              |  to get a new password.
+          // /span
+        // /row
+      // /.fluid-container
+    // /fluid-row
+    // start: JavaScript
+    script(src='../js/jquery-1.9.1.min.js')
+    | &#x9;
+    script(src='../js/jquery-migrate-1.0.0.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery-ui-1.10.0.custom.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.ui.touch-punch.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/modernizr.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/bootstrap.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.cookie.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/fullcalendar.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.dataTables.min.js')
+    | &#x9;&#x9;
+    script(src='../js/excanvas.js')
+    | &#x9;
+    script(src='../js/jquery.flot.js')
+    | &#x9;
+    script(src='../js/jquery.flot.pie.js')
+    | &#x9;
+    script(src='../js/jquery.flot.stack.js')
+    | &#x9;
+    script(src='../js/jquery.flot.resize.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.chosen.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.uniform.min.js')
+    | &#x9;&#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.cleditor.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.noty.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.elfinder.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.raty.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.iphone.toggle.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.uploadify-3.1.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.gritter.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.imagesloaded.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.masonry.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.knob.modified.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/jquery.sparkline.min.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/counter.js')
+    | &#x9;
+    | &#x9;&#x9;
+    script(src='../js/retina.js')
+    | &#x9;&#x9;
+    script(src='../js/custom.js')
+    // end: JavaScript

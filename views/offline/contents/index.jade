@@ -1,0 +1,74 @@
+//
+   Created by alex on 15/9/21.
+extends ../../shard/layout-manage
+block content
+    ul.breadcrumb
+        li
+            i.icon-home
+            a(href='/offline') 后台首页
+            i.icon-angle-right
+        li
+            a(href='#') 图文内容
+    .row-fluid.sortable
+        .box.span12
+            .box-header(data-original-title='')
+                h2
+                    i.halflings-icon.user
+                    span.break
+                    | 图文内容
+                .box-icon
+                    a.btn-setting(href='#')
+                        i.halflings-icon.wrench
+                    a.btn-minimize(href='#')
+                        i.halflings-icon.chevron-up
+                    a.btn-close(href='#')
+                        i.halflings-icon.remove
+            .box-content
+                #message.alert.hidden
+                    button.close(type='button', data-dismiss='alert') &times;
+                    strong 操作成功！
+                label
+                    a.btn.btn-primary(href='./content/edit') 添加图文内容
+                table.table.table-striped.table-bordered.bootstrap-datatable.datatable
+                    thead
+                        tr
+                            th 标志位
+                            th 标题
+                            th 修改日期
+                            th 操作
+                    tbody
+                        each val,index in data
+                            tr
+                                th #{val.key}
+                                th.center #{val.title}
+                                td.center #{val.update}
+                                td.center
+                                    a.btn.btn-mini.btn-success(href='/about/#{val.key}')
+                                        i.halflings-icon.white.zoom-in
+                                    a.btn.btn-mini.btn-info(href='./content/edit/#{val.key}')
+                                        i.halflings-icon.white.edit
+                                    a.del.btn-mini.btn.btn-danger(href='javascript:;',data-id='#{val._id}')
+                                        i.halflings-icon.white.trash
+    include ../../includes/pop
+block script
+    script.
+        $(function () {
+            var message = $('#message');
+            $('.del').on('click', function () {
+                var self=$(this);
+                if (showModal && typeof showModal === 'function') {
+                    showModal('删除确认', '是否真的删除该图文内容？', null, function () {
+                        $.post('/offline/content/del/' + self.data('id'), function (data) {
+                            if (data == 'ok') {
+                                location.href = '/offline/content';
+                                //message.addClass('alert-success').removeClass('hidden');
+                                //self.parents('tr').eq(0).remove();
+                            } else {
+                                alert('删除失败，请重试！');
+                                //message.addClass('alert-error').removeClass('hidden');
+                            }
+                        });
+                    });
+                }
+            });
+        });

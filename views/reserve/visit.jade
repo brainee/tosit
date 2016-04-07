@@ -1,0 +1,110 @@
+extends ../shard/layout
+block content
+    .visit
+        .container
+            .row
+                .col-sm-12
+                    .crumbs
+                        - var cat = product ? product.categories:'未知类型';
+                        a(href="/") 首页
+                        span -
+                        a(href="/product?t=category&cat=#{cat}") #{cat}
+                        span -
+                        span 上门量体
+        .container
+            .row
+                .col-sm-12
+                    .visit-main
+                        .visit-desc
+                            h4 上门量体
+                            p 上门量体是我公司为广大客户提供的一项免费服务。您申请预约后，我公司会派遣量体师到您指定地点为您服务。
+                            p 此项服务还在试运行中，目前暂限于上海地区。
+                            p 如需此项服务，请联系我们的在线客服。您也可拨打电话400-600-1751,我们竭诚为您服务!
+                            p 我公司总部位于上海市海淀区温泉镇山口一号院，欢迎到我公司考察并免费量体。您也可以填写以下预约单进行在线预约。
+                            p
+                                a(href="javascript:;").f-red 查看地图
+                                | （您可以在百度地图直接搜索“xxxx服装有限公司”)
+                        .divide
+                        h3 测量者基本信息
+                        form#personalForm.form-horizontal(method="post")
+                            input#channel(name="channel",type="hidden",value="#{channel}")
+                            input#type(name="type",type="hidden",value="visit")
+                            .form-group
+                                label.col-sm-2.control-label(for='userName') 姓名
+                                .col-sm-10
+                                    input#userName.form-control(name='userName',type='text',placeholder='姓名', required,data-msg-required='请输入姓名')
+                            .form-group
+                                label.col-sm-2.control-label(for='weddingDate') 婚期
+                                .col-sm-10
+                                    .input-group.date.form_date(data-date='', data-link-field="weddingDate")
+                                        span.input-group-addon
+                                            i.glyphicon.glyphicon-calendar
+                                        input#marryDate.form-control(type='text',placeholder='婚期',name='weddingDate',readonly=true,required,data-msg-required='请选择婚期')
+                                        input#weddingDate(type='hidden')
+                            .form-group
+                                label.col-sm-2.control-label(for='birthday') 生日
+                                .col-sm-10
+                                    .input-group.date.form_date(data-date='', data-link-field="birthday")
+                                        span.input-group-addon
+                                            i.glyphicon.glyphicon-calendar
+                                        input#birth.form-control(type='text',placeholder='生日',name='birthday',readonly=true,required,data-msg-required='请选择生日')
+                                        input#birthday(type='hidden')
+                            .form-group
+                                label.col-sm-2.control-label(for='area') 所在地区
+                                .col-sm-10
+                                    select#area.form-control(name='area',required,data-msg-required='请选择地区')
+                                        option(value='') 所在地区
+                                        option(value='黄浦区') 黄浦区
+                                        option(value='徐汇区') 徐汇区
+                                        option(value='长宁区') 长宁区
+                                        option(value='静安区') 静安区
+                                        option(value='闸北区') 闸北区
+                                        option(value='虹口区') 虹口区
+                                        option(value='杨浦区') 杨浦区
+                                        option(value='宝山区') 宝山区
+                                        option(value='闵行区') 闵行区
+                                        option(value='嘉定区') 嘉定区
+                                        option(value='浦东新区') 浦东新区
+                                        option(value='青浦区') 青浦区
+                                        option(value='松江区') 松江区
+                                        option(value='金山区') 金山区
+                                        option(value='奉贤区') 奉贤区
+                                        option(value='普陀区') 普陀区
+                                        option(value='崇明县') 崇明县
+                            .form-group
+                                label.col-sm-2.control-label(for='appointmentTime') 意向预约时间
+                                .col-sm-10
+                                    .input-group.date.form_datetime(data-date='', data-link-field="appointmentTime")
+                                        span.input-group-addon
+                                            i.glyphicon.glyphicon-th
+                                        input#bookDate.form-control(type='datetime',placeholder='意向预约时间',readonly=true,required,data-msg-required='请选择预约时间')
+                                        input#appointmentTime(name='appointmentTime',type='hidden')
+                            .form-group
+                                label.col-sm-2.control-label(for='remark') 备注
+                                .col-sm-10
+                                    textarea#remark.form-control(name='remark',rows='4',placeholder='备注')
+                            .form-group
+                                .col-sm-10.col-sm-offset-2
+                                    a#btnSubmit.btn.btn-primary(href='javascript:;') 提交
+    #myModal.modal.fade(tabindex='-1',role='dialog',aria-labelledby="mySmallModalLabel")
+        .modal-dialog.modal-sm
+            .modal-content
+                .modal-header
+                    button.close(type='button',data-dismiss='modal',aria-label='关闭')
+                        span(aria-hidden='true') &times;
+                    h4.modal-title 提示
+                .modal-body
+                    //.alert.alert-success(role='alert')
+                    //p.text-success 提交成功，稍后会有工作人员联系您！
+                .modal-footer
+                    button.btn.btn-default(type='button',data-dismiss='modal') 关闭
+                    button.btn.btn-primary(type='button',data-dismiss='modal') 确定
+
+block style
+    link(rel='stylesheet', href='/css/bootstrap-datetimepicker.min.css')
+
+block script
+    script(src='/js/view/plugin/jquery.validate.min.js',charset="UTF-8")
+    script(src='/js/lib/bootstrap-datetimepicker.min.js',charset="UTF-8")
+    script(src='/js/lib/bootstrap-datetimepicker.zh-CN.js',charset="UTF-8")
+    script(src='/js/view/visit.js',charset="UTF-8")
